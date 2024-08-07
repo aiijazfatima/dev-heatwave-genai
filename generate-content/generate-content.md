@@ -29,6 +29,7 @@ In this lab, you will be guided through the following task:
     ```
 
     - To load llama2-7b-v1 model:
+    
     ```bash
     <copy>call sys.ML_MODEL_LOAD('llama2-7b-v1', NULL);</copy>
     ```
