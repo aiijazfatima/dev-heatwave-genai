@@ -7,7 +7,7 @@ HeatWave GenAI is the industry's first automated in-database Generative AI servi
 
 ## About this Workshop
 
-In this LiveLab, you will connect to a HeatWave DB System. Subsequently, you will use HeatWave GenAI to generate content in natural language and perform vector search on your enterprise data.
+In this LiveLab, you will first setup Visual Studio Code. You will then create a DB system with a HeatWave cluster, and connect to it from Visual Studio Code. Subsequently, you will use HeatWave GenAI to generate content in natural language, summarize text, and perform vector search on your enterprise data.
 
 _Estimated Time:_ 1.5 hours
 
@@ -25,7 +25,7 @@ In this lab, you will be guided through the following steps:
 
 1. Setup MySQL Shell for Visual Studio Code
 2. Create a DB system
-3. Connect to the DB System from VS Code
+3. Connect to the DB System from Visual Studio Code
 4. Generate content
 5. Perform a vector search
 
