@@ -66,7 +66,13 @@ Pre-authenticated requests provide a way to let you access a bucket or an object
 
     ![Create Pre-Authenticated Request](./images/8-create-par.png "Create Pre-Authenticated Request")
 
-2. In the **Create Pre-Authenticated Request** dialog box, enter the **Name**, ensure **Bucket** is selected, and click **Create Pre-Authenticated Request**. You can choose to increase the **Expiration** date of the Pre-Authenticated Request.
+2. In the **Create Pre-Authenticated Request** dialog box, do the following:
+    - Enter the **Name**.
+    - Select **Bucket** in **Pre-Authenticated Request Target**.
+    - Select **Permits object reads** in **Access Type**.
+    - Select **Enable Object Listing**.
+    - You can choose to increase the **Expiration** date of the Pre-Authenticated Request.
+    - Click **Create Pre-Authenticated Request**. 
 
     ![Enter Pre-Authenticated Request details](./images/9-par-details.png "Enter Pre-Authenticated Request details")
 
@@ -116,7 +122,7 @@ Pre-authenticated requests provide a way to let you access a bucket or an object
 
     ![Ingest files from Object Storage](./images/14-ingest-files.png "Ingest files from Object Storage")
 
-5. Verify that embeddings are loaded in the vector embeddings table:
+5. Wait for a few minutes, and verify that embeddings are loaded in the vector embeddings table.
 
     ```bash
     <copy>select count(*) from <EmbeddingsTableName>;</copy>
@@ -125,14 +131,15 @@ Pre-authenticated requests provide a way to let you access a bucket or an object
     ```bash
     <copy>select count(*) from livelab_embedding; </copy>
     ```
+    You should see a numerical value in the output, which means your embeddings are successfully loaded in the table. If you get an error, wait for a few minutes and try again. It takes a couple of minutes to create vector embeddings.
 
-If you see a numerical value in the output, your embeddings are successfully loaded in the table.
+    ![Vector embeddings](./images/15-check-count.png "Vector embeddings")
 
 ## Task 5: Perform a vector search
 
 HeatWave retrieves content from the vector store and provide that as context to the LLM. This process is called as retrieval-augmented generation or RAG. This helps the LLM to produce more relevant and accurate results for your queries.
 
-1. Load the LLM in HeatWave.
+1. Load the LLM in HeatWave by entering the following command, and clicking **Execute the selection or full block on HeatWave and create a new block**.
 
     ```bash
     <copy>call sys.ML_MODEL_LOAD('LLMModel', NULL);</copy>
@@ -157,7 +164,7 @@ HeatWave retrieves content from the vector store and provide that as context to 
     For example:
 
     ```bash
-    <copy>set @options = JSON_OBJECT("vector_store", JSON_ARRAY("genai_db.livelab_embedding"));</copy>
+    <copy>set @options = JSON_OBJECT("vector_store", JSON_ARRAY("genai_db.livelab_embedding_pdf"));</copy>
     ```
 
 3. Set the session @query variable to define your natural language query.
@@ -174,14 +181,13 @@ HeatWave retrieves content from the vector store and provide that as context to 
     <copy>set @query="What is HeatWave AutoML?";</copy>
     ```
 
-    ![Set options](./images/17-set-options.png "Set options")
-
-
-4. Retrieve the augmented prompt, use the ML_RAG routine.
+4. Retrieve the augmented prompt, using the ML_RAG routine, and click **Execute the selection or full block on HeatWave and create a new block**.
 
     ```bash
     <copy>call sys.ML_RAG(@query,@output,@options);</copy>
     ```
+
+    ![Set options](./images/17-set-options.png "Set options")
 
 5. Print the output:
 
@@ -195,50 +201,7 @@ HeatWave retrieves content from the vector store and provide that as context to 
 
     - The citations section shows the segments and documents it referred to as context.
 
-The output looks similar to the following:
-
-```bash
-"text": " AutoML is a machine learning technique that automates the process
-of selecting, training, and evaluating machine learning models. It involves
-using algorithms and techniques to automatically identify the best model
-for a given dataset and optimize its hyperparameters without requiring manual
-intervention from data analysts or ML practitioners. AutoML can be used in
-various stages of the machine learning pipeline, including data preprocessing,
-feature engineering, model selection, hyperparameter tuning,
-and model evaluation.",
-"citations": [
-  {
-    "segment": "Oracle AutoML also produces high quality models very efficiently,
-    which is achieved through a scalable design and intelligent choices that
-    reduce trials at each stage in the pipeline.\n Scalable design: The Oracle
-    AutoML pipeline is able to exploit both HeatWave internode and intranode
-    parallelism, which improves scalability and reduces runtime.",
-    "distance": 0.4262576103210449,
-    "document_name": "https://objectstorage.Region.oraclecloud.com/n/Namespace/b/BucketName/o/Path/Filename"
-  },
-  {
-    "segment": "The HeatWave AutoML ML_TRAIN routine leverages Oracle AutoML
-    technology to automate the process of training a machine learning model.
-    Oracle AutoML replaces the laborious and time consuming tasks of the data
-    analyst whose workflow is as follows:\n1. Selecting a model from a large
-    number of viable candidate models.\n2.\n99",
-    "distance": 0.4311879277229309,
-    "document_name": " https://objectstorage. Region.oraclecloud.com/n/Namespace/b/BucketName/o/Path/Filename"
-  },
-  {
-    "segment": "3.1 HeatWave AutoML Features HeatWave AutoML makes it easy to
-    use machine learning, whether you are a novice user or an experienced ML
-    practitioner. You provide the data, and HeatWave AutoML analyzes the
-    characteristics of the data and creates an optimized machine learning model
-    that you can use to generate predictions and explanations.",
-    "distance": 0.4441382884979248,
-    "document_name": "https://objectstorage. Region.oraclecloud.com/n/Namespace/b/BucketName/o/Path/Filename"
-  }
-],
-"vector_store": [
-  "demo_db.demo_embeddings"
-]
-```
+    ![Vector search results](./images/18-vector-search-output.png "Vector search results")
 ## Learn More
 
 - [HeatWave User Guide](https://dev.mysql.com/doc/heatwave/en/)
