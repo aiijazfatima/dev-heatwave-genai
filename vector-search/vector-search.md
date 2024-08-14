@@ -10,9 +10,11 @@ _Estimated Time:_ 10 minutes
 
 In this lab, you will be guided through the following task:
 
-- Create a bucket.
-- Upload files to the bucket.
-- Create a Pre-Authenticated Request.
+- Create a bucket and a folder.
+- Upload files to the bucket folder.
+- Copy the OCID of your compartment.
+- Create a dynamic group.
+- Write policies for the dynamic group.
 - Set up a vector store.
 - Perform a vector search.
 
@@ -20,7 +22,7 @@ In this lab, you will be guided through the following task:
 
 - Must complete Lab 4.
 
-## Task 1: Create a bucket
+## Task 1: Create a bucket and a folder
 
 The Object Storage service provides reliable, secure, and scalable object storage. Object Storage uses buckets to organize your files. 
 
@@ -36,19 +38,35 @@ The Object Storage service provides reliable, secure, and scalable object storag
 
     ![Enter bucket details](./images/3-enter-bucket-details.png "Enter bucket details")
 
-4. A bucket is created.
+4. Once the bucket is created, click the name of the bucket to open the **Bucket Details** page. 
 
     ![Created bucket](./images/4-created-bucket.png "Created bucket")
 
-## Task 2: Upload files to the bucket
+5. Copy the bucket name and **Namespace**, and paste the it somewhere in durable storage for future reference.
 
-1.  In the **Object Storage & Archive Storage** page, click the bucket name to view its details.
+    ![Bucket namespace](./images/35-bucket-namespace.png "Bucket namespace")
+
+6. Under **Objects**, click **More Action**, and then click **Create New Folder**.
+
+    ![Create new folder](./images/31-create-new-folder.png "Create new folder")
+
+7. In the **Create New Folder** page, enter a **Name** of the folder, and note it for future reference.
+
+    ![Enter new folder details](./images/32-enter-folder-details.png "Enter new folder details")
+
+## Task 2: Upload files to the bucket folder
+
+1.  In the **Object Storage & Archive Storage** page, click the bucket name.
 
     ![View bucket details](./images/5-view-bucket-details.png "View bucket details")
 
-2. Under **Objects**, click **Upload**.
+2.  Under **Objects**, click the bucket folder name.
 
-    ![Click upload](./images/5-view-bucket-details.png "Click upload")
+    ![Click bucket folder](./images/33-click-bucket-folder.png "Click bucket folder")
+
+2.  Click **Upload**.
+
+    ![Click upload](./images/34-click-upload.png "Click upload")
 
 3. Click **select files** to display a file selection dialog box, and select the files you want to perform a vector search on, and click **Upload**.
 
@@ -58,7 +76,90 @@ The Object Storage service provides reliable, secure, and scalable object storag
 
     ![Upload files finished](./images/7-upload-files-finished.png "Upload files finished")
 
-## Task 3: Create a Pre-Authenticated Request
+## Task 3: Copy the OCID of your compartment
+
+1. Open the **Navigation menu**, click **Identity & Security**, and under **Identity**, click **Compartments**.
+
+    ![Click Domain](./images/23-click-compartment.png "Click Domain")
+
+2. In the **Compartments** page, hover over the OCID of your compartment, click **Copy**, and paste the OCID somewhere in durable storage for future reference.
+
+    ![Copy compartment OCID](./images/24-copy-comparment-ocid.png "Copy compartment OCID")
+
+## Task 4: Create a dynamic group
+
+Dynamic groups allow you to group Oracle Cloud Infrastructure resources as principal. You can then create policies to permit the dynamic groups to access Oracle Cloud Infrastructure services.  
+
+1. Open the **Navigation menu**, click **Identity & Security**, and under **Identity**, click **Domains**.
+
+    ![Click Domain](./images/19-click-domain.png "Click Domain")
+
+2. Click the name of the current domain. 
+
+    ![Current Domain](./images/20-current-domain.png "Click Domain")
+
+3. Under **Identity domain**, click **Dynamic groups**.
+
+    ![Click dynamic group](./images/21-click-dynamic-group "Click group")
+
+4. Click **Create dynamic group**.
+
+    ![Create dynamic group](./images/22-create-dynamic-group.png "Create dynamic group")
+
+5. In the **Create dynamic group** page, enter a **Name** and a **Description** for the dynamic group. *Note* the name of the dynamic group.
+
+6. Click **Rule builder**.
+
+    ![Click Rule Builder](./images/25-enter-dynamic-group-details.png "Click Rule Builder")
+
+7. In the **Create matching rule** page, select **Compartment OCID** in **Match instances with** field, and paste the OCID of the compartment that you had copied in Task 3.
+
+8. Click **Add Rule**.
+
+    ![Enter compartment details](./images/26-enter-ocid.png "Enter compartment details")
+
+9. In the **Create dynamic group** page, click **Create**.
+
+    ![Create dynamic group](./images/27-click-create-dynamic-group.png "Create dynamic group")
+
+## Task 5: Write policies for the dynamic group
+
+To access Object Storage from HeatWave, you must define a policy that enables the dynamic group to access to buckets and its folders.
+
+ 1. Open the **Navigation menu**, click **Identity & Security**, and under **Identity**, click **Policies**.
+
+    ![Click policy](./images/28-click-policies.png "Click policy")
+
+ 2. Click **Create Policy**.
+
+   ![Create dynamic group](./images/29-create-policies.png "Create dynamic group")
+
+3. In **Create policy** page, enter the **Name**, and **Description** of the policy.
+
+4. Ensure that the Compartment is **heatwave-genai**.
+
+5. Toggle the **Show manual editor** button, and paste the following policy.
+
+   ```bash
+    <copy>Allow dynamic-group <DynamicGroupName> to read buckets in compartment <CompartmentName></copy>
+	<copy>Allow dynamic-group <DynamicGroupName> to read objects in compartment <CompartmentName></copy>
+    ```
+
+    Replace DynamicGroupName with the name of the dynamic group and CompartmentName with the name of the compartment.
+
+    For example:
+     
+     ```bash
+    <copy>Allow dynamic-group heatwavegenai-dynamic-group to read buckets in compartment heatwave-genai</copy>
+    <copy>Allow dynamic-group heatwavegenai-dynamic-group to read objects in compartment heatwave-genai</copy>
+    ```
+
+  6. Click **Create**.
+
+    ![Enter policy details](./images/30-enter-policy-details.png "Enter policy details")
+
+
+<!-- /*## Task 3: Create a Pre-Authenticated Request
 
 Pre-authenticated requests provide a way to let you access a bucket or an object without having your own credentials.
 
@@ -78,10 +179,10 @@ Pre-authenticated requests provide a way to let you access a bucket or an object
 
 3. Copy the URL that appears in the **Pre-Authenticated Request Details** dialog box, paste the URL somewhere in durable storage for future reference, and click **Close**.
 
-    ![Copy Pre-Authenticated Request details](./images/10-copy-par.png "Copy Pre-Authenticated Request details")
+    ![Copy Pre-Authenticated Request details](./images/10-copy-par.png "Copy Pre-Authenticated Request details")*/ -->
 
 
-## Task 4: Set up a vector store
+## Task 6: Set up a vector store
 
 1. Create a new schema and select it. You can also select any existing schema.
 
@@ -135,7 +236,7 @@ Pre-authenticated requests provide a way to let you access a bucket or an object
 
     ![Vector embeddings](./images/15-check-count.png "Vector embeddings")
 
-## Task 5: Perform a vector search
+## Task 7: Perform a vector search
 
 HeatWave retrieves content from the vector store and provide that as context to the LLM. This process is called as retrieval-augmented generation or RAG. This helps the LLM to produce more relevant and accurate results for your queries.
 
