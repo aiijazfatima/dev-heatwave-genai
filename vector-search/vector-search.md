@@ -106,11 +106,7 @@ Dynamic groups allow you to group Oracle Cloud Infrastructure resources as princ
 
     ![Click Domain](./images/19-click-domain.png "Click Domain")
 
-2. If you have logged in using an identity domain (Lab 3, Task 1), click the name of the identity domain. 
-
-    ![Current Domain](./images/20-current-domain.png "Click Domain")
-
-3. If you have logged in using the Default identity domain (Lab 3, Task 1), click **Create domain**.
+2. Click **Create domain**.
 
     1. Enter a name for the domain in **Display name**.
 
@@ -139,8 +135,6 @@ Dynamic groups allow you to group Oracle Cloud Infrastructure resources as princ
     ![Click dynamic group](./images/21-click-dynamic-group.png "Click group")
 
 5. Click **Create dynamic group**.
-
-    ![Create dynamic group](./images/22-create-dynamic-group.png "Create dynamic group")
 
 6. In the **Create dynamic group** page, enter a **Name** and a **Description** for the dynamic group. *Note* the name of the dynamic group.
 
@@ -201,37 +195,18 @@ To access Object Storage from HeatWave, you must define a policy that enables th
 
 5. Toggle the **Show manual editor** button, and paste the following policy.
 
-    - If you have logged in using an identity domain:
+    ```bash
+    <copy>Allow dynamic-group <IdentityDomain>/<DynamicGroupName> to read buckets in compartment <CompartmentName></copy>
+    <copy>Allow dynamic-group <IdentityDomain>/<DynamicGroupName> to read objects in compartment <CompartmentName></copy>
+    ```
+    Replace IdentityDomain with the identity domain, DynamicGroupName with the name of the dynamic group, and CompartmentName with the name of the compartment.
 
-        ```bash
-        <copy>Allow dynamic-group <IdentityDomain>/<DynamicGroupName> to read buckets in compartment <CompartmentName></copy>
-        <copy>Allow dynamic-group <IdentityDomain>/<DynamicGroupName> to read objects in compartment <CompartmentName></copy>
-        ```
-
-        Replace IdentityDomain with the identity domain, DynamicGroupName with the name of the dynamic group, and CompartmentName with the name of the compartment.
-
-        For example:
+    For example:
         
-        ```bash
-        <copy>Allow dynamic-group OracleCloudIdentityDomain/heatwave-genai-dynamic-group to read buckets in compartment heatwave-genai</copy>
-        <copy>Allow dynamic-group OracleCloudIdentityDomain/heatwave-genai-dynamic-group to read objects in compartment heatwave-genai</copy>
-        ```
-
-    - If you have logged in using the default identity domain:
-
-        ```bash
-        <copy>Allow dynamic-group <DynamicGroupName> to read buckets in compartment <CompartmentName></copy>
-        <copy>Allow dynamic-group <DynamicGroupName> to read objects in compartment <CompartmentName></copy>
-        ```
-
-        Replace DynamicGroupName with the name of the dynamic group, and CompartmentName with the name of the compartment.
-
-        For example:
-        
-        ```bash
-        <copy>Allow dynamic-group heatwave-genai-dynamic-group to read buckets in compartment heatwave-genai</copy>
-        <copy>Allow dynamic-group heatwave-genai-dynamic-group to read objects in compartment heatwave-genai</copy>
-        ```
+    ```bash
+    <copy>Allow dynamic-group heatwave-genai-domain/heatwave-genai-dynamic-group to read buckets in compartment heatwave-genai</copy>
+    <copy>Allow dynamic-group heatwave-genai-domain/heatwave-genai-dynamic-group to read objects in compartment heatwave-genai</copy>
+    ```
 
   6. Click **Create**.
 
@@ -287,7 +262,7 @@ Pre-authenticated requests provide a way to let you access a bucket or an object
 4. Ingest the file from the Object Storage, create vector embeddings, and load the vector embeddings into HeatWave:
 
     ```bash
-    <copy>call sys.VECTOR_STORE_LOAD('<PAR>', '{"table_name": "<EmbeddingsTableName>"}');</copy>
+    <copy>call sys.VECTOR_STORE_LOAD('oci://BucketName@Namespace/Path/Filename', '{"table_name": "VectorStoreTableName"}');</copy>
     ```
     Replace the following:
 
@@ -297,7 +272,7 @@ Pre-authenticated requests provide a way to let you access a bucket or an object
     For example:
 
     ```bash
-    <copy>call sys.VECTOR_STORE_LOAD('https://axoumfbmk7ld.objectstorage.uk-cardiff-1.oci.customer-oci.com/p/XKR6gUuquT8bSL-ftu89F58FTblCr8QcoN5JcuUzpVE8FqQZ5kgEvr1WR-a5lIYv/n/axoumfbmk7ld/b/bucket-vector-search/o/', '{"table_name": "livelab_embedding"}');</copy>
+    <copy>call sys.VECTOR_STORE_LOAD('oci://bucket-vector-search@axoumfbmk7ld/bucket-folder-heatwave/heatwave-aws-service-guide.pdf', '{"table_name": "EmbeddingsTableName"}');</copy>
     ```
 
     ![Ingest files from Object Storage](./images/14-ingest-files.png "Ingest files from Object Storage")

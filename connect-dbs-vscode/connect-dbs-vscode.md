@@ -28,35 +28,31 @@ Before you can get started, you must set up a DB Connection to the HeatWave inst
     
     ![Enter cloud account name](./images/1-cloud-account-name.png "Enter cloud account name")
 
-3. If you have an identity domain, select the identity domain.
-
-    ![Select identity domain](./images/15-identity-domain.png "Select identity domain")
-
-4. If you do not have identity domain, select **Default**.
+3. Select **Default** as the identity domain.
 
     ![Default identity domain](./images/16-default-identity-domain.png "Default identity domain")
 
-5. Enter your **Username** and **Password** and click **Sign In**.
+4. Enter your **Username** and **Password** and click **Sign In**.
 
     ![Enter username and password](./images/2-username.png "Enter username and password")
 
-6. Click **Profile** and select **My Profile**.
+5. Click **Profile** and select **My Profile**.
 
     ![My profile](./images/3-profile.png "My profile")
 
-7.	Under **Resources**, click **API keys**, and click **Add API key**.
+6.	Under **Resources**, click **API keys**, and click **Add API key**.
 
-8. Click **Download private key** and store the API Key in a .oci folder inside your home directory. Then click **Add**.
+7. Click **Download private key** and store the API Key in a .oci folder inside your home directory. Then click **Add**.
     
     ![Download private key](./images/4-add-api-key.png "Download private key")
 
-9. Copy the configuration file text and switch to VS Code.
+8. Copy the configuration file text and switch to VS Code.
 
     ![Copy configuration file](./images/5-copy-config.png "Copy configuration file")
 
-10. In VS Code, select the **MySQL Shell for VS Code** extension.
+9. In VS Code, select the **MySQL Shell for VS Code** extension.
 
-11. Click **Configure the OCI Profile List** in the **ORACLE CLOUD INFRASTRUCTURE** view, and paste the configuration file text into the config file.
+10. Click **Configure the OCI Profile List** in the **ORACLE CLOUD INFRASTRUCTURE** view, and paste the configuration file text into the config file.
 
     - Rename the top section from [DEFAULT] to the name of the tenancy, [TenancyName]
     - Update the path to the API Key you had stored in your home directory.
