@@ -64,6 +64,8 @@ The Object Storage service provides reliable, secure, and scalable object storag
 
     ![Enter new folder details](./images/32-enter-folder-details.png "Enter new folder details")
 
+9. Click **Create**.
+
 ## Task 2: Upload files to the bucket folder
 
 1.  In the **Object Storage & Archive Storage** page, click the bucket name.
@@ -266,13 +268,16 @@ Pre-authenticated requests provide a way to let you access a bucket or an object
     ```
     Replace the following:
 
-    - PAR: Pre-Authenticated Request of the bucket, which you had copied in Task 3.
-    - EmbeddingsTableName: The name you want for the vector embeddings table.
-
+    - BucketName: The OCI Object Storage bucket name.
+    - Namespace: The name of the Object Storage bucket namespace.
+    - Path: Path to the folder that contains the source file.
+    - Filename: The filename with the file extension.
+    - VectorStoreTableName: The name you want for the vector store table
+   
     For example:
 
     ```bash
-    <copy>call sys.VECTOR_STORE_LOAD('oci://bucket-vector-search@axoumfbmk7ld/bucket-folder-heatwave/heatwave-aws-service-guide.pdf', '{"table_name": "EmbeddingsTableName"}');</copy>
+    <copy>call sys.VECTOR_STORE_LOAD('oci://bucket-vector-search@axoumfbmk7ld/bucket-folder-heatwave/heatwave-aws-service-guide.pdf', '{"table_name": "livelab_embedding"}');</copy>
     ```
 
     ![Ingest files from Object Storage](./images/14-ingest-files.png "Ingest files from Object Storage")
