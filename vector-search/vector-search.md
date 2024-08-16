@@ -100,13 +100,24 @@ Dynamic groups allow you to group Oracle Cloud Infrastructure resources as princ
 
 3. Under **Identity domain**, click **Dynamic groups**.
 
-    ![Click dynamic group](./images/21-click-dynamic-group "Click group")
+    ![Click dynamic group](./images/21-click-dynamic-group.png "Click group")
 
 4. Click **Create dynamic group**.
 
     ![Create dynamic group](./images/22-create-dynamic-group.png "Create dynamic group")
 
 5. In the **Create dynamic group** page, enter a **Name** and a **Description** for the dynamic group. *Note* the name of the dynamic group.
+
+    **Name**:
+    
+    ```bash
+    <copy>heatwavegenai-dynamic-group</copy>
+    ```
+    **Description**:
+
+    ```bash
+    <copy>Dynamic group for HeatWave GenAI</copy>
+    ```
 
 6. Click **Rule builder**.
 

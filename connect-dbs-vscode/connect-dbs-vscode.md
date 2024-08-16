@@ -22,38 +22,48 @@ In this lab, you will be guided through the following tasks:
 
 Before you can get started, you must set up a DB Connection to the HeatWave instance on the Oracle Cloud Infrastructure (OCI). This has to be done once since MySQL Shell for VS Code will store all registered DB connections.
 
-1. Log into the [OCI Console](cloud.oracle.com).
+1. Log into the [OCI Console](https://www.oracle.com/cloud/sign-in.html?redirect_uri=https%3A%2F%2Fcloud.oracle.com%2F).
 
 2. Enter your **Cloud Account Name** and click **Next**. 
     
     ![Enter cloud account name](./images/1-cloud-account-name.png "Enter cloud account name")
 
-3. Enter your **Username** and **Password** and click **Sign In**.
+3. If you have an identity domain, select the identity domain.
+
+    ![Select identity domain](./images/15-identity-domain.png "Select identity domain")
+
+4. If you do not have identity domain, select **Default**.
+
+    ![Default identity domain](./images/16-default-identity-domain.png "Default identity domain")
+
+5. Enter your **Username** and **Password** and click **Sign In**.
 
     ![Enter username and password](./images/2-username.png "Enter username and password")
 
-4. Click **Profile** and select **My Profile**.
+6. Click **Profile** and select **My Profile**.
 
     ![My profile](./images/3-profile.png "My profile")
 
-5.	Under **Resources**, click **API keys**, and click **Add API key**.
+7.	Under **Resources**, click **API keys**, and click **Add API key**.
 
-6. Click **Download private key** and store the API Key in a .oci folder inside your home directory. Then click **Add**.
+8. Click **Download private key** and store the API Key in a .oci folder inside your home directory. Then click **Add**.
     
     ![Download private key](./images/4-add-api-key.png "Download private key")
 
-7. Copy the configuration file text and switch to VS Code.
+9. Copy the configuration file text and switch to VS Code.
 
     ![Copy configuration file](./images/5-copy-config.png "Copy configuration file")
 
-8. In VS Code, select the **MySQL Shell for VS Code** extension and click **Configure the OCI Profile List** in the **ORACLE CLOUD INFRASTRUCTURE** view, and paste the configuration file text into the config file.
+10. In VS Code, select the **MySQL Shell for VS Code** extension.
+
+11. Click **Configure the OCI Profile List** in the **ORACLE CLOUD INFRASTRUCTURE** view, and paste the configuration file text into the config file.
 
     - Rename the top section from [DEFAULT] to the name of the tenancy, [TenancyName]
     - Update the path to the API Key you had stored in your home directory.
 
     ![Save configuration file](./images/6-save-config.png "Save configuration file")
 
-9. Close the file and reload the **ORACLE CLOUD INFRASTRUCTURE** view. You can browse the resources of your OCI tenancy.
+11. Close the file and reload the **ORACLE CLOUD INFRASTRUCTURE** view. You can browse the resources of your OCI tenancy.
 
     ![Tenancy details](./images/7-tenancy-details.png "Tenancy details")
 
@@ -80,11 +90,11 @@ Before you can get started, you must set up a DB Connection to the HeatWave inst
 
 6. Check whether you are connected to the DB system by running the following command:
 
-```bash
-show databases;
-```
+    ```bash
+    show databases;
+    ```
 
-![New Database Connection](./images/12-show-databases.png "New Database Connection")
+    ![New Database Connection](./images/12-show-databases.png "New Database Connection")
 
 You may now **proceed to the next lab**.
 

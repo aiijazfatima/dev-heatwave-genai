@@ -30,9 +30,21 @@ In this lab, you will be guided through the following tasks:
 
 2. On the Compartments page, click **Create Compartment**.
 
-3. In the **Create Compartment** dialog box, provide a **Name** and **Description**.
+3. In the **Create Compartment** dialog box, enter the following:
 
-4. Select the **Parent Compartment** if any, or specify **heatwave-genai**, and click **Create Compartment**.
+    **Name**:
+
+    ```bash
+    <copy>heatwave-genai</copy>
+    ```
+    
+    **Description**:
+
+    ```bash
+    <copy>Compartment for HeatWave GenAI</copy>
+    ```
+
+5. Click **Create Compartment**.
 
     ![Create a compartment](./images/2-create-compartment.png "Create a compartment")
 
@@ -50,15 +62,21 @@ In this lab, you will be guided through the following tasks:
 
     ![Start VCN Wizard](./images/5-start-vcn-wizard-dialog-box.png "Start VCN Wizard ")
 
-4. Under **Basic information**, provide a **VCN name** and select the **heatwave-genai** compartment, and click **Next**.
+4. Under **Basic information**, provide a **VCN name**:
+
+    ```bash
+    <copy>heatwave-genai-vcn</copy>
+    ```
+
+ 5. Select the **heatwave-genai** compartment, and click **Next**.
 
     ![VCN configuration](./images/6-create-vcn-internet-connectivity.png "VCN configuration")
 
-5. Review Oracle Virtual Cloud Network (VCN), Subnets, and Gateways, and click **Create**.
+6. Review Oracle Virtual Cloud Network (VCN), Subnets, and Gateways, and click **Create**.
 
     ![Create VCN](./images/7-create-vcn.png "Create VCN")
 
-6. When the Virtual Cloud Network is created, click **View VCN** to display the created VCN.
+7. When the Virtual Cloud Network is created, click **View VCN** to display the created VCN.
 
     ![View VCN](./images/8-view-vcn.png "View VCN")
 
@@ -78,13 +96,13 @@ In this lab, you will be guided through the following tasks:
 
 4. On **Add Ingress Rules** panel, enter the following, and click **Add Ingress Rules**:
 
-    Source CIDR:
+    **Source CIDR**:
 
     ```bash
     <copy>0.0.0.0/0</copy>
     ```
 
-    Destination Port Range:
+    **Destination Port Range**:
 
     ```bash
     <copy>3306,33060</copy>
@@ -120,13 +138,13 @@ In this lab, you will be guided through the following tasks:
 
 6. On **Add Ingress Rules** panel, enter the following, and click **Add Ingress Rules**:
 
-    Source CIDR:
+    **Source CIDR**:
 
     ```bash
     <copy>0.0.0.0/0</copy>
     ```
 
-    Destination Port Range:
+    **Destination Port Range**:
 
     ```bash
     <copy>80,443</copy>
@@ -144,65 +162,79 @@ In this lab, you will be guided through the following tasks:
     
     ![Select HeatWave DB System](./images/20-select-heatwave-db-system.png "Select HeatWave DB System")
 
-2. Click **Create DB system**.
+2. Ensure that **heatwave-genai** compartment is selected, and click **Create DB system**.
 
     ![Create DB system](./images/21-create-dbs.png "Create DB system")
 
 3. In the **Create DB system** panel, select **Development or Testing**.
 
-4. Select **heatwave-genai** compartment, enter a name for the DB system, and the administrator credentials. *Note* the administrator credentials as you will need them to connect to the DB system. 
+4. Under **Create in compartment**, select **heatwave-genai**, and enter a name for the DB system.
+
+  **Name**:
+
+    ```bash
+    <copy>heatwave-genai-dbs</copy>
+    ```
+
+5. Enter the administrator credentials. *Note* the administrator credentials as you will need them to connect to the DB system. 
 
     ![HeatWave DB system details](./images/22-create-dbs-admin.png "HeatWave DB system details")
 
-5. Select **Standalone** instance, and select the VCN and private subnet you created earlier.
+6. Select **Standalone** instance, and select the VCN, **heatwave-genai-vcn**, and private subnet, **private subnet-heatwave-genai-vcn**, which you created earlier.
 
    ![Configure networking](./images/23-configure-networking.png "Configure networking")
 
-6. Let the **Configure placement** settings remain as is.
+7. Let the **Configure placement** settings remain as is.
 
-7. Under **Configure hardware**, select **Enable HeatWave cluster**, and click **Change shape**.
+8. Under **Configure hardware**, select **Enable HeatWave cluster**, and click **Change shape**.
 
    ![Change shape](./images/24-change-shape.png "Change shape")
 
-8. In the **Browse all shapes** page, select **MySQL.32** shape. The ECPU Shape of the DB system must be MySQL.32.
+9. In the **Browse all shapes** page, select **MySQL.32** shape. The ECPU Shape of the DB system must be MySQL.32.
 
     ![Select MySQL.32 shape](./images/25-select-mysql-32.png "Select MySQL.32 shape")
 
-9. Click **Configure HeatWave cluster**.
+10. Click **Configure HeatWave cluster**.
 
     ![Configure HeatWave cluster](./images/26-configure-heatwave-cluster.png "Configure HeatWave cluster")
 
-10. In **Configure HeatWave cluster** page, click **Change shape**.
+11. In **Configure HeatWave cluster** page, click **Change shape**.
 
     ![Change HeatWave shape](./images/27-change-heatwave-shape.png "Change Heatwave shape")
 
-11. In the **Browse all shapes** page, select **HeatWave.512** shape, and click **Select a shape**. The HeatWave Shape must be HeatWave.512.
+12. In the **Browse all shapes** page, select **HeatWave.512** shape, and click **Select a shape**. The HeatWave Shape must be HeatWave.512.
 
     ![Change HeatWave shape](./images/28-select-heatwave-512.png "Change Heatwave shape")
 
-12. Select **HeatWave Lakehouse**, and click **Save changes**. HeatWave Lakehouse must be enabled on the DB system.
+13. Select **HeatWave Lakehouse**, and click **Save changes**. HeatWave Lakehouse must be enabled on the DB system.
 
     ![Enable Lakehouse](./images/29-enable-lakehouse.png "Enable Lakehouse")
 
-13. Click **Show advanced options**.
+14. Click **Show advanced options**.
 
-14. Go to the **Configuration** tab, and under **Database version**, select version **9.0.0 - Innovation** or higher version.
+15. Go to the **Configuration** tab, and under **Database version**, select version **9.0.0 - Innovation** or higher version.
 
     ![Select database innovation version](./images/31-innovation-version.png "Select database innovation version")
 
-15. Go to the **Connections** tab, enter the **Hostname**, which is same as DB system name, and click **Create**:
+16. Go to the **Connections** tab, enter the **Hostname**, which is same as DB system name, and click **Create**:
+
+    **Hostname**:
+
+    ```bash
+    <copy>heatwave-genai-dbs</copy>
+    ```
 
     ![HeatWave hostname](./images/32-heatwave-hostname.png "HeatWave hostname")
 
-16.  While the DB system is created, the state is shown as **CREATING**.
+17.  While the DB system is created, the state is shown as **CREATING**.
 
     ![Show creating state](./images/33-dbs-creating.png "Show creating state")
 
-14. The new DB system will be ready to use after a few minutes. The state **ACTIVE** indicates that the DB system is ready for use. 
+18. The new DB system will be ready to use after a few minutes. The state **ACTIVE** indicates that the DB system is ready for use. 
 
     ![Show active state](./images/34-dbs-active.png "Show active state")
 
-15. In the **Connections** tab, note the **Private IP address** of the DB system, which is the HeatWave endpoint.
+19. In the **Connections** tab, note the **Private IP address** of the DB system, which is the HeatWave endpoint.
 
     ![Heatwave endpoint](./images/35-heatwave-endpoint.png "Heatwave endpoint")
 
