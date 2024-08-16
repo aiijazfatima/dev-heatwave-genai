@@ -34,23 +34,33 @@ The Object Storage service provides reliable, secure, and scalable object storag
 
     ![Create bucket](./images/2-create-bucket.png "Create bucket")
 
-3. Enter the **Bucket Name**, accept the defaults for the rest of the fields, and click **Create**.
+3. Enter the **Bucket Name**, and accept the defaults for the rest of the fields.
+
+    ```bash
+    <copy>bucket-vector-search</copy>
+    ```
+
+4. Click **Create**.
 
     ![Enter bucket details](./images/3-enter-bucket-details.png "Enter bucket details")
 
-4. Once the bucket is created, click the name of the bucket to open the **Bucket Details** page. 
+5. Once the bucket is created, click the name of the bucket to open the **Bucket Details** page. 
 
     ![Created bucket](./images/4-created-bucket.png "Created bucket")
 
-5. Copy the bucket name and **Namespace**, and paste the it somewhere in durable storage for future reference.
+6. Copy the bucket name and **Namespace**, and paste the it somewhere for future reference.
 
     ![Bucket namespace](./images/35-bucket-namespace.png "Bucket namespace")
 
-6. Under **Objects**, click **More Action**, and then click **Create New Folder**.
+7. Under **Objects**, click **More Action**, and then click **Create New Folder**.
 
     ![Create new folder](./images/31-create-new-folder.png "Create new folder")
 
-7. In the **Create New Folder** page, enter a **Name** of the folder, and note it for future reference.
+8. In the **Create New Folder** page, enter a **Name** of the folder, and note it for future reference.
+
+    ```bash
+    <copy>bucket-folder-heatwave</copy>
+    ```
 
     ![Enter new folder details](./images/32-enter-folder-details.png "Enter new folder details")
 
@@ -68,11 +78,13 @@ The Object Storage service provides reliable, secure, and scalable object storag
 
     ![Click upload](./images/34-click-upload.png "Click upload")
 
-3. Click **select files** to display a file selection dialog box, and select the files you want to perform a vector search on, and click **Upload**.
+3. Click **select files** to display a file selection dialog box.
+
+4. Select the files you want to perform a vector search on, and click **Upload**.
 
     ![Upload files](./images/6-upload-files.png "Upload files")
 
-4. When the file status shows **Finished**, click **Close** to return to the bucket.
+5. When the file status shows **Finished**, click **Close** to return to the bucket.
 
     ![Upload files finished](./images/7-upload-files-finished.png "Upload files finished")
 
@@ -82,7 +94,7 @@ The Object Storage service provides reliable, secure, and scalable object storag
 
     ![Click Domain](./images/23-click-compartment.png "Click Domain")
 
-2. In the **Compartments** page, hover over the OCID of your compartment, click **Copy**, and paste the OCID somewhere in durable storage for future reference.
+2. In the **Compartments** page, hover over the OCID of your compartment, click **Copy**, and paste the OCID somewhere for future reference.
 
     ![Copy compartment OCID](./images/24-copy-comparment-ocid.png "Copy compartment OCID")
 
@@ -94,24 +106,48 @@ Dynamic groups allow you to group Oracle Cloud Infrastructure resources as princ
 
     ![Click Domain](./images/19-click-domain.png "Click Domain")
 
-2. Click the name of the current domain. 
+2. If you have logged in using an identity domain (Lab 3, Task 1), click the name of the identity domain. 
 
     ![Current Domain](./images/20-current-domain.png "Click Domain")
 
-3. Under **Identity domain**, click **Dynamic groups**.
+3. If you have logged in using the Default identity domain (Lab 3, Task 1), click **Create domain**.
+
+    1. Enter a name for the domain in **Display name**.
+
+        ```bash
+        <copy>heatwave-genai-domain</copy>
+        ```
+
+    2. Enter a description:
+
+        ```bash
+        <copy>Domain for HeatWave GenAI</copy>
+        ```
+
+    3. Select **Free** in **Domain Type**.
+
+    4. Deselect **Create an administrator user for this domain**.
+
+    5. Click **Create domain**.
+
+        ![Create domain](./images/36-create-domain.png "Create domain")
+
+    6. Once the domain is created, click the name of the domain, **heatwave-genai-domain**.
+
+4. Under **Identity domain**, click **Dynamic groups**.
 
     ![Click dynamic group](./images/21-click-dynamic-group.png "Click group")
 
-4. Click **Create dynamic group**.
+5. Click **Create dynamic group**.
 
     ![Create dynamic group](./images/22-create-dynamic-group.png "Create dynamic group")
 
-5. In the **Create dynamic group** page, enter a **Name** and a **Description** for the dynamic group. *Note* the name of the dynamic group.
+6. In the **Create dynamic group** page, enter a **Name** and a **Description** for the dynamic group. *Note* the name of the dynamic group.
 
     **Name**:
     
     ```bash
-    <copy>heatwavegenai-dynamic-group</copy>
+    <copy>heatwave-genai-dynamic-group</copy>
     ```
     **Description**:
 
@@ -119,19 +155,23 @@ Dynamic groups allow you to group Oracle Cloud Infrastructure resources as princ
     <copy>Dynamic group for HeatWave GenAI</copy>
     ```
 
-6. Click **Rule builder**.
+    ![Create dynamic group](./images/38-create-dynamic-group.png "Create dynamic group")
 
-    ![Click Rule Builder](./images/25-enter-dynamic-group-details.png "Click Rule Builder")
+7. Enter the followng rule:
 
-7. In the **Create matching rule** page, select **Compartment OCID** in **Match instances with** field, and paste the OCID of the compartment that you had copied in Task 3.
+    ```bash
+    <copy>ALL{resource.type='mysqldbsystem', resource.compartment.id = '<OCIDComparment>'}</copy>
+    ```
+    For example:
 
-8. Click **Add Rule**.
+    ```bash
+    <copy>ALL{resource.type='mysqldbsystem', resource.compartment.id = 'ocid1.compartment.oc1..aaaaaaaad2mplktxh7unkxodwcqpvtj32ierpvvixvu7qedzsfonq'}</copy>
+    ```
 
-    ![Enter compartment details](./images/26-enter-ocid.png "Enter compartment details")
+    ![Enter rule](./images/37-dynamic-group-rule.png "Enter rule")
 
-9. In the **Create dynamic group** page, click **Create**.
+8. Click **Create**.
 
-    ![Create dynamic group](./images/27-click-create-dynamic-group.png "Create dynamic group")
 
 ## Task 5: Write policies for the dynamic group
 
@@ -147,23 +187,51 @@ To access Object Storage from HeatWave, you must define a policy that enables th
 
 3. In **Create policy** page, enter the **Name**, and **Description** of the policy.
 
+    **Name**:
+
+    ```bash
+    <copy>heatwave-genai-policy</copy>
+    ```
+    **Description**:
+    ```bash
+    <copy>Policy for HeatWave GenAI</copy>
+    ```
+
 4. Ensure that the Compartment is **heatwave-genai**.
 
 5. Toggle the **Show manual editor** button, and paste the following policy.
 
-   ```bash
-    <copy>Allow dynamic-group <DynamicGroupName> to read buckets in compartment <CompartmentName></copy>
-	<copy>Allow dynamic-group <DynamicGroupName> to read objects in compartment <CompartmentName></copy>
-    ```
+    - If you have logged in using an identity domain:
 
-    Replace DynamicGroupName with the name of the dynamic group and CompartmentName with the name of the compartment.
+        ```bash
+        <copy>Allow dynamic-group <IdentityDomain>/<DynamicGroupName> to read buckets in compartment <CompartmentName></copy>
+        <copy>Allow dynamic-group <IdentityDomain>/<DynamicGroupName> to read objects in compartment <CompartmentName></copy>
+        ```
 
-    For example:
-     
-     ```bash
-    <copy>Allow dynamic-group heatwavegenai-dynamic-group to read buckets in compartment heatwave-genai</copy>
-    <copy>Allow dynamic-group heatwavegenai-dynamic-group to read objects in compartment heatwave-genai</copy>
-    ```
+        Replace IdentityDomain with the identity domain, DynamicGroupName with the name of the dynamic group, and CompartmentName with the name of the compartment.
+
+        For example:
+        
+        ```bash
+        <copy>Allow dynamic-group OracleCloudIdentityDomain/heatwave-genai-dynamic-group to read buckets in compartment heatwave-genai</copy>
+        <copy>Allow dynamic-group OracleCloudIdentityDomain/heatwave-genai-dynamic-group to read objects in compartment heatwave-genai</copy>
+        ```
+
+    - If you have logged in using the default identity domain:
+
+        ```bash
+        <copy>Allow dynamic-group <DynamicGroupName> to read buckets in compartment <CompartmentName></copy>
+        <copy>Allow dynamic-group <DynamicGroupName> to read objects in compartment <CompartmentName></copy>
+        ```
+
+        Replace DynamicGroupName with the name of the dynamic group, and CompartmentName with the name of the compartment.
+
+        For example:
+        
+        ```bash
+        <copy>Allow dynamic-group heatwave-genai-dynamic-group to read buckets in compartment heatwave-genai</copy>
+        <copy>Allow dynamic-group heatwave-genai-dynamic-group to read objects in compartment heatwave-genai</copy>
+        ```
 
   6. Click **Create**.
 
@@ -188,7 +256,7 @@ Pre-authenticated requests provide a way to let you access a bucket or an object
 
     ![Enter Pre-Authenticated Request details](./images/9-par-details.png "Enter Pre-Authenticated Request details")
 
-3. Copy the URL that appears in the **Pre-Authenticated Request Details** dialog box, paste the URL somewhere in durable storage for future reference, and click **Close**.
+3. Copy the URL that appears in the **Pre-Authenticated Request Details** dialog box, paste the URL somewhere for future reference, and click **Close**.
 
     ![Copy Pre-Authenticated Request details](./images/10-copy-par.png "Copy Pre-Authenticated Request details")*/ -->
 

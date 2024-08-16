@@ -24,15 +24,15 @@ In this lab, you will be guided through the following task:
 
     - To load mistral-7b-instruct-v1 model:
 
-    ```bash
-    <copy>call sys.ML_MODEL_LOAD('mistral-7b-instruct-v1', NULL);</copy>
-    ```
+        ```bash
+        <copy>call sys.ML_MODEL_LOAD('mistral-7b-instruct-v1', NULL);</copy>
+        ```
 
     - To load llama2-7b-v1 model:
     
-    ```bash
-    <copy>call sys.ML_MODEL_LOAD('llama2-7b-v1', NULL);</copy>
-    ```
+        ```bash
+        <copy>call sys.ML_MODEL_LOAD('llama2-7b-v1', NULL);</copy>
+        ```
 
     ![Load LLMs](./images/1-load-llm.png "Load LLMs")
  
@@ -43,6 +43,7 @@ In this lab, you will be guided through the following task:
     ```
 
     For example:
+    
     ```bash
     <copy>set @query="What is the use of generative AI in 200 words";</copy>
     ```
