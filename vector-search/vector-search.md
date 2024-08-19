@@ -289,7 +289,7 @@ Pre-authenticated requests provide a way to let you access a bucket or an object
     ```
     For example:
     ```bash
-    <copy>select count(*) from livelab_embedding; </copy>
+    <copy>select count(*) from livelab_embedding_pdf; </copy>
     ```
     You should see a numerical value in the output, which means your embeddings are successfully loaded in the table. If you get an error, wait for a few minutes and try again. It takes a couple of minutes to create vector embeddings.
 

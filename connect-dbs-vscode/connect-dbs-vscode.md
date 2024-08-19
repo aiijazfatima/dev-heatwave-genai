@@ -42,7 +42,13 @@ Before you can get started, you must set up a DB Connection to the HeatWave inst
 
 6.	Under **Resources**, click **API keys**, and click **Add API key**.
 
-7. Click **Download private key** and store the API Key in a .oci folder inside your home directory. Then click **Add**.
+7. Click **Download private key**.
+    
+    1. Store the API key in a .oci folder inside your home directory.
+
+    2. Rename the API key to oci_api_key.pem.
+
+    3. Click **Add**.
     
     ![Download private key](./images/4-add-api-key.png "Download private key")
 
@@ -55,6 +61,7 @@ Before you can get started, you must set up a DB Connection to the HeatWave inst
 10. Click **Configure the OCI Profile List** in the **ORACLE CLOUD INFRASTRUCTURE** view, and paste the configuration file text into the config file.
 
     - Rename the top section from [DEFAULT] to the name of the tenancy, [TenancyName]
+    
     - Update the path to the API Key you had stored in your home directory.
 
     ![Save configuration file](./images/6-save-config.png "Save configuration file")
