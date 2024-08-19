@@ -24,7 +24,7 @@ In this lab, you will be guided through the following tasks:
 
 ## Task 1: Create Compartment
 
-1. Click the **Navigation Menu** in the upper left, navigate to **Identity & Security**, and under **Identity**, select **Compartments**.
+1. Click the **Navigation menu** in the upper left, navigate to **Identity & Security**, and under **Identity**, select **Compartments**.
 
     ![Select compartment](./images/1-select-compartment.png "Select compartment")
 
@@ -50,7 +50,7 @@ In this lab, you will be guided through the following tasks:
 
 ## Task 2: Create Virtual Cloud Network
 
-1. Click the **Navigation Menu** in the upper left, navigate to **Networking**, and select **Virtual Cloud Networks**.
+1. Click the **Navigation menu** in the upper left, navigate to **Networking**, and select **Virtual cloud networks**.
 
     ![Select VCN](./images/3-select-vcn.png "Select VCN")
 
@@ -68,7 +68,7 @@ In this lab, you will be guided through the following tasks:
     <copy>heatwave-genai-vcn</copy>
     ```
 
- 5. Select the **heatwave-genai** compartment, and click **Next**.
+ 5. Ensure that **heatwave-genai** compartment is selected, and click **Next**.
 
     ![VCN configuration](./images/6-create-vcn-internet-connectivity.png "VCN configuration")
 
@@ -90,7 +90,7 @@ In this lab, you will be guided through the following tasks:
 
     ![Select security lists](./images/10-select-security-list.png "Select security lists")
 
-3. On Security List for **security list for private subnet-heatwave-genai-vcn** page, under **Ingress Rules**, click **Add Ingress Rules**.
+3. On the **security list for private subnet-heatwave-genai-vcn** page, under **Ingress Rules**, click **Add Ingress Rules**.
 
     ![Add ingress rules](./images/11-add-ingress-rules.png "Add ingress rules")
 
@@ -116,11 +116,11 @@ In this lab, you will be guided through the following tasks:
 
 ## Task 4: Configure security list to allow HTTP incoming connections
 
-1. Click the **Navigation Menu** in the upper left, navigate to **Networking**, and select **Virtual Cloud Networks**.
+1. Click the **Navigation menu** in the upper left, navigate to **Networking**, and select **Virtual cloud networks**.
 
     ![Select VCN](./images/3-select-vcn.png "Select VCN")
 
-2. Under **Compartment**, select **heatwave-genai**, and click the VCN you created, **heatwave-genai-vcn**.
+2. Under **Compartment**, ensure **heatwave-genai** is selected, and click the VCN you created, **heatwave-genai-vcn**.
 
     ![Select VCN](./images/14-select-vcn.png "Select VCN")
 
@@ -158,7 +158,7 @@ In this lab, you will be guided through the following tasks:
 
 ## Task 5: Create a DB system
 
-1. Click the **Navigation Menu** in the upper left, navigate to **Databases**, and under HeatWave select **DB Systems**.
+1. Click the **Navigation menu** in the upper left, navigate to **Databases**, and under **HeatWave**, select **DB Systems**.
     
     ![Select HeatWave DB System](./images/20-select-heatwave-db-system.png "Select HeatWave DB System")
 
@@ -168,7 +168,7 @@ In this lab, you will be guided through the following tasks:
 
 3. In the **Create DB system** panel, select **Development or Testing**.
 
-4. Under **Create in compartment**, select **heatwave-genai**, and enter a name for the DB system.
+4. Under **Create in compartment**, ensure **heatwave-genai** is selected, and enter a name for the DB system.
 
   **Name**:
 
@@ -190,7 +190,7 @@ In this lab, you will be guided through the following tasks:
 
    ![Change shape](./images/24-change-shape.png "Change shape")
 
-9. In the **Browse all shapes** page, select **MySQL.32** shape. The ECPU Shape of the DB system must be MySQL.32.
+9. In the **Browse all shapes** page, ensure the compute model is **ECPU**, select **MySQL.32** shape, and click **Select a shape**. The ECPU Shape of the DB system must be MySQL.32.
 
     ![Select MySQL.32 shape](./images/25-select-mysql-32.png "Select MySQL.32 shape")
 
