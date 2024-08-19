@@ -4,7 +4,7 @@
 
 In this lab you will setup MySQL Shell for Visual Studio Code, and connect to the DB system you created in Lab 1 from VS Code.
 
-_Estimated Time:_ 15 minutes
+_Estimated Time:_ 30 minutes
 
 ### Objectives
 
@@ -36,21 +36,7 @@ In this lab, you will be guided through the following tasks:
 
 Before you can get started, you must set up a DB Connection to the HeatWave instance on the Oracle Cloud Infrastructure (OCI). This has to be done once since MySQL Shell for VS Code will store all registered DB connections.
 
-1. Log into the [OCI Console](https://www.oracle.com/cloud/sign-in.html?redirect_uri=https%3A%2F%2Fcloud.oracle.com%2F).
-
-2. Enter your **Cloud Account Name** and click **Next**. 
-    
-    ![Enter cloud account name](./images/1-cloud-account-name.png "Enter cloud account name")
-
-3. Select **Default** as the identity domain.
-
-    ![Default identity domain](./images/16-default-identity-domain.png "Default identity domain")
-
-4. Enter your **Username** and **Password** and click **Sign In**.
-
-    ![Enter username and password](./images/2-username.png "Enter username and password")
-
-5. Click **Profile** and select **My Profile**.
+1. On the right side of the OCI Console, click **Profile**, and select **My Profile**.
 
     ![My profile](./images/3-profile.png "My profile")
 
@@ -66,7 +52,7 @@ Before you can get started, you must set up a DB Connection to the HeatWave inst
         <copy>oci_api_key.pem</copy>
         ```
 
-8. In the **Add API key** panel, Click **Add**.
+8. In the **Add API key** panel, click **Add**.
     
     ![Download private key](./images/4-add-api-key.png "Download private key")
 
@@ -84,7 +70,7 @@ Before you can get started, you must set up a DB Connection to the HeatWave inst
 
     ![Save configuration file](./images/6-save-config.png "Save configuration file")
 
-11. Close the file and reload the **ORACLE CLOUD INFRASTRUCTURE** view. You can browse the resources of your OCI tenancy.
+11. Close the file and reload the **ORACLE CLOUD INFRASTRUCTURE** view. Within a couple of minutes, you can browse the resources of your OCI tenancy.
 
     ![Tenancy details](./images/7-tenancy-details.png "Tenancy details")
 

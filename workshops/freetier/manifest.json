@@ -20,7 +20,7 @@
         },
 
         {
-          "title": "Lab 2: Setup MySQL Shell for Visual Studio Code",
+          "title": "Lab 2: Connect to the DB System from Visual Studio Code",
           "filename": "../../connect-dbs-vscode/connect-dbs-vscode.md"
         },
 

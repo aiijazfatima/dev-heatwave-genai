@@ -4,7 +4,7 @@
 
 In this lab, you will create a create a compartment, a Virtual Cloud Network,  and  DB System.  
 
-_Estimated Time:_ 20 minutes
+_Estimated Time:_ 30 minutes
 
 ### Objectives
 
