@@ -20,7 +20,7 @@ In this lab, you will be guided through the following tasks:
 
 - An Oracle trial or paid cloud account.
 - Some experience with MySQL Shell.
-- Must complete Lab 1.
+- You have logged into the OCI Console using the default identity domain.
 
 ## Task 1: Create Compartment
 

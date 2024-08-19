@@ -40,9 +40,9 @@ Before you can get started, you must set up a DB Connection to the HeatWave inst
 
     ![My profile](./images/3-profile.png "My profile")
 
-6.	Under **Resources**, click **API keys**, and click **Add API key**.
+2.  Under **Resources**, click **API keys**, and click **Add API key**.
 
-7. Click **Download private key**.
+3. Click **Download private key**.
     
     1. Store the API key in a .oci folder inside your home directory.
 
@@ -52,17 +52,19 @@ Before you can get started, you must set up a DB Connection to the HeatWave inst
         <copy>oci_api_key.pem</copy>
         ```
 
-8. In the **Add API key** panel, click **Add**.
+        ![OCI API Key](./images/17-oci-api-key.png "OCI API Key")
+
+4. Switch to OCI Console, and in the **Add API key** panel, click **Add**.
     
     ![Download private key](./images/4-add-api-key.png "Download private key")
 
-8. Copy the configuration file text and switch to VS Code.
+5. Copy the configuration file text and switch to VS Code.
 
     ![Copy configuration file](./images/5-copy-config.png "Copy configuration file")
 
-9. In VS Code, select the **MySQL Shell for VS Code** extension.
+6. In VS Code, select the **MySQL Shell for VS Code** extension.
 
-10. Click **Configure the OCI Profile List** in the **ORACLE CLOUD INFRASTRUCTURE** view, and paste the configuration file text into the config file.
+7. Click **Configure the OCI Profile List** in the **ORACLE CLOUD INFRASTRUCTURE** view, and paste the configuration file text into the config file.
 
     - Rename the top section from [DEFAULT] to the name of the tenancy, [TenancyName]
 
@@ -70,7 +72,7 @@ Before you can get started, you must set up a DB Connection to the HeatWave inst
 
     ![Save configuration file](./images/6-save-config.png "Save configuration file")
 
-11. Close the file and reload the **ORACLE CLOUD INFRASTRUCTURE** view. Within a couple of minutes, you can browse the resources of your OCI tenancy.
+8. Close the file and reload the **ORACLE CLOUD INFRASTRUCTURE** view. Within a couple of minutes, you can browse the resources of your OCI tenancy.
 
     ![Tenancy details](./images/7-tenancy-details.png "Tenancy details")
 
@@ -89,16 +91,18 @@ Before you can get started, you must set up a DB Connection to the HeatWave inst
 
     ![Database Connection Configuration](./images/10-database-connection.png "Database Connection Configuration")
 
-4. Click **OK** to create the connection. 
+4. It takes a couple of minutes to create the Bastion.
 
-5. Click **Open New Database Connection** icon to connect to the DB system. 
+5. Once the Bastion is created, click **OK** to create the connection. 
+
+6. Under **DATABASE CONNECTIONS**, click **Open New Database Connection** icon next to your DB system to connect to it. 
 
     ![Open New Database Connection](./images/11-open-database-connection.png "Open New Database Connection")
 
-6. Check whether you are connected to the DB system by running the following command:
+7. Check whether you are connected to the DB system by entering the following command and clicking **Execute the selection or full block on HeatWave and create a new block**.
 
     ```bash
-    show databases;
+    <copy>show databases;</copy>
     ```
 
     ![New Database Connection](./images/12-show-databases.png "New Database Connection")

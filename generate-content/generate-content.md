@@ -34,7 +34,7 @@ In this lab, you will be guided through the following task:
         <copy>call sys.ML_MODEL_LOAD('llama2-7b-v1', NULL);</copy>
         ```
 
-    ![Load LLMs](./images/1-load-llm.png "Load LLMs")
+        ![Load LLMs](./images/1-load-llm.png "Load LLMs")
  
 2. Set the @query session variable with your query in natural language.
 

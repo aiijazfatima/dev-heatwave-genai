@@ -4,7 +4,7 @@
 
 Using the in-built vector store and retrieval-augmented generation (RAG), you can load and query unstructured documents stored in Object Storage using natural language within the HeatWave ecosystem.
 
-_Estimated Time:_ 10 minutes
+_Estimated Time:_ 30 minutes
 
 ### Objectives
 
@@ -52,7 +52,7 @@ The Object Storage service provides reliable, secure, and scalable object storag
 
     ![Bucket namespace](./images/35-bucket-namespace.png "Bucket namespace")
 
-7. Under **Objects**, click **More Action**, and then click **Create New Folder**.
+7. Under **Objects**, click **More Actions**, and then click **Create New Folder**.
 
     ![Create new folder](./images/31-create-new-folder.png "Create new folder")
 
@@ -68,11 +68,7 @@ The Object Storage service provides reliable, secure, and scalable object storag
 
 ## Task 2: Upload files to the bucket folder
 
-1.  In the **Object Storage & Archive Storage** page, click the bucket name.
-
-    ![View bucket details](./images/5-view-bucket-details.png "View bucket details")
-
-2.  Under **Objects**, click the bucket folder name.
+1.  In the **Bucket Details** page, under **Objects**, click the bucket folder name.
 
     ![Click bucket folder](./images/33-click-bucket-folder.png "Click bucket folder")
 
@@ -108,37 +104,17 @@ Dynamic groups allow you to group Oracle Cloud Infrastructure resources as princ
 
     ![Click Domain](./images/19-click-domain.png "Click Domain")
 
-2. Click **Create domain**.
+2. Click the domain, **Default**. Note that you had logged into OCI Console using the default identity domain.
 
-    1. Enter a name for the domain in **Display name**.
+    ![Click default domain](./images/39-default-domain.png "Click default domain")
 
-        ```bash
-        <copy>heatwave-genai-domain</copy>
-        ```
-
-    2. Enter a description:
-
-        ```bash
-        <copy>Domain for HeatWave GenAI</copy>
-        ```
-
-    3. Select **Free** in **Domain Type**.
-
-    4. Deselect **Create an administrator user for this domain**.
-
-    5. Click **Create domain**.
-
-        ![Create domain](./images/36-create-domain.png "Create domain")
-
-    6. Once the domain is created, click the name of the domain, **heatwave-genai-domain**.
-
-4. Under **Identity domain**, click **Dynamic groups**.
+3. Under **Identity domain**, click **Dynamic groups**.
 
     ![Click dynamic group](./images/21-click-dynamic-group.png "Click group")
 
-5. Click **Create dynamic group**.
+4. Click **Create dynamic group**.
 
-6. In the **Create dynamic group** page, enter a **Name** and a **Description** for the dynamic group. *Note* the name of the dynamic group.
+5. In the **Create dynamic group** page, enter a **Name** and a **Description** for the dynamic group. *Note* the name of the dynamic group.
 
     **Name**:
     
@@ -153,11 +129,13 @@ Dynamic groups allow you to group Oracle Cloud Infrastructure resources as princ
 
     ![Create dynamic group](./images/38-create-dynamic-group.png "Create dynamic group")
 
-7. Enter the followng rule:
+6. Enter the followng rule:
 
     ```bash
     <copy>ALL{resource.type='mysqldbsystem', resource.compartment.id = '<OCIDComparment>'}</copy>
     ```
+    Replace OCIDComparment with the OCID of the compartment you had copied in Task 3.
+
     For example:
 
     ```bash
@@ -195,19 +173,19 @@ To access Object Storage from HeatWave, you must define a policy that enables th
 
 4. Ensure that the Compartment is **heatwave-genai**.
 
-5. Toggle the **Show manual editor** button, and paste the following policy.
+5. Toggle the **Show manual editor** button, and paste the following policy. *Note* that you can use the following command only when you have logged into OCI Console using the default domain.
 
     ```bash
-    <copy>Allow dynamic-group <IdentityDomain>/<DynamicGroupName> to read buckets in compartment <CompartmentName></copy>
-    <copy>Allow dynamic-group <IdentityDomain>/<DynamicGroupName> to read objects in compartment <CompartmentName></copy>
+    <copy>Allow dynamic-group <DynamicGroupName> to read buckets in compartment <CompartmentName></copy>
+    <copy>Allow dynamic-group <DynamicGroupName> to read objects in compartment <CompartmentName></copy>
     ```
-    Replace IdentityDomain with the identity domain, DynamicGroupName with the name of the dynamic group, and CompartmentName with the name of the compartment.
+    Replace DynamicGroupName with the name of the dynamic group, and CompartmentName with the name of the compartment. 
 
     For example:
         
     ```bash
-    <copy>Allow dynamic-group heatwave-genai-domain/heatwave-genai-dynamic-group to read buckets in compartment heatwave-genai</copy>
-    <copy>Allow dynamic-group heatwave-genai-domain/heatwave-genai-dynamic-group to read objects in compartment heatwave-genai</copy>
+    <copy>Allow dynamic-group heatwave-genai-dynamic-group to read buckets in compartment heatwave-genai</copy>
+    <copy>Allow dynamic-group heatwave-genai-dynamic-group to read objects in compartment heatwave-genai</copy>
     ```
 
   6. Click **Create**.
@@ -264,20 +242,19 @@ Pre-authenticated requests provide a way to let you access a bucket or an object
 4. Ingest the file from the Object Storage, create vector embeddings, and load the vector embeddings into HeatWave:
 
     ```bash
-    <copy>call sys.VECTOR_STORE_LOAD('oci://BucketName@Namespace/Path/Filename', '{"table_name": "VectorStoreTableName"}');</copy>
+    <copy>call sys.VECTOR_STORE_LOAD('oci://BucketName@Namespace/Path/', '{"table_name": "VectorStoreTableName"}');</copy>
     ```
     Replace the following:
 
     - BucketName: The OCI Object Storage bucket name.
     - Namespace: The name of the Object Storage bucket namespace.
     - Path: Path to the folder that contains the source file.
-    - Filename: The filename with the file extension.
     - VectorStoreTableName: The name you want for the vector store table
    
     For example:
 
     ```bash
-    <copy>call sys.VECTOR_STORE_LOAD('oci://bucket-vector-search@axoumfbmk7ld/bucket-folder-heatwave/heatwave-aws-service-guide.pdf', '{"table_name": "livelab_embedding"}');</copy>
+    <copy>call sys.VECTOR_STORE_LOAD('oci://bucket-vector-search@axoumfbmk7ld/bucket-folder-heatwave/', '{"table_name": "livelab_embedding"}');</copy>
     ```
 
     ![Ingest files from Object Storage](./images/14-ingest-files.png "Ingest files from Object Storage")
