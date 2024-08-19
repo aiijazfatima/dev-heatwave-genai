@@ -15,27 +15,22 @@
         },
 
         {
-            "title": "Lab 1: Setup MySQL Shell for Visual Studio Code",
-            "filename": "../../setup-mysql-shell-vscode/setup-mysql-shell-vscode.md"
-        },
-
-        {
-          "title": "Lab 2: Create a DB System with a HeatWave Cluster",
+          "title": "Lab 1: Create a DB System with a HeatWave Cluster",
           "filename": "../../create-dbs/create-dbs.md"
         },
 
         {
-          "title": "Lab 3: Connect to the DB System from Visual Studio Code",
+          "title": "Lab 2: Setup MySQL Shell for Visual Studio Code",
           "filename": "../../connect-dbs-vscode/connect-dbs-vscode.md"
         },
 
         {
-          "title": "Lab 4: Generate Content",
+          "title": "Lab 3: Generate Content",
           "filename": "../../generate-content/generate-content.md"
         },
 
         {
-          "title": "Lab 5: Perform a Vector Search",
+          "title": "Lab 4: Perform a Vector Search",
           "filename": "../../vector-search/vector-search.md"
         },
 
