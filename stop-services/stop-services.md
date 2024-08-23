@@ -13,7 +13,7 @@ _Estimated Time:_ 5 minutes
 
 In this lab, you will be guided through the following task:
 
-- Stop the DB system.
+- Stop the HeatWave instance.
 - Delete the bucket.
 
 ### Prerequisites
@@ -22,7 +22,7 @@ In this lab, you will be guided through the following task:
 - Some Experience with MySQL Shell
 - Completed Lab1-5
 
-## Task 1: Stop the DB System
+## Task 1: Stop the HeatWave instance
 
 1. Click the **Navigation Menu** in the upper left, navigate to **Databases**, and under HeatWave select **DB Systems**.
 

@@ -1,8 +1,8 @@
-# Perform a Vector Search
+# Perform Retrieval Augmented Generation 
 
 ## Introduction
 
-Using the in-built vector store and retrieval-augmented generation (RAG), you can load and query unstructured documents stored in Object Storage using natural language within the HeatWave ecosystem.
+Using the in-database vector store and retrieval-augmented generation (RAG), you can load and query unstructured documents stored in Object Storage using natural language within the HeatWave ecosystem.
 
 _Estimated Time:_ 30 minutes
 
@@ -12,7 +12,6 @@ In this lab, you will be guided through the following task:
 
 - Create a bucket and a folder.
 - Upload files to the bucket folder.
-- Copy the OCID of your compartment.
 - Create a dynamic group.
 - Write policies for the dynamic group.
 - Set up a vector store.
@@ -20,7 +19,7 @@ In this lab, you will be guided through the following task:
 
 ### Prerequisites
 
-- Must complete Lab 4.
+- Must complete Lab 3.
 
 ## Task 1: Create a bucket and a folder
 
@@ -86,7 +85,10 @@ The Object Storage service provides reliable, secure, and scalable object storag
 
     ![Upload files finished](./images/7-upload-files-finished.png "Upload files finished")
 
-## Task 3: Copy the OCID of your compartment
+
+## Task 3: Create a dynamic group
+
+Dynamic groups allow you to group Oracle Cloud Infrastructure resources as principal. You can then create policies to permit the dynamic groups to access Oracle Cloud Infrastructure services. 
 
 1. Open the **Navigation menu**, click **Identity & Security**, and under **Identity**, click **Compartments**.
 
@@ -96,25 +98,21 @@ The Object Storage service provides reliable, secure, and scalable object storag
 
     ![Copy compartment OCID](./images/24-copy-comparment-ocid.png "Copy compartment OCID")
 
-## Task 4: Create a dynamic group
-
-Dynamic groups allow you to group Oracle Cloud Infrastructure resources as principal. You can then create policies to permit the dynamic groups to access Oracle Cloud Infrastructure services.  
-
-1. Open the **Navigation menu**, click **Identity & Security**, and under **Identity**, click **Domains**.
+3. Open the **Navigation menu**, click **Identity & Security**, and under **Identity**, click **Domains**.
 
     ![Click Domain](./images/19-click-domain.png "Click Domain")
 
-2. Click the domain, **Default**. Note that you had logged into OCI Console using the default identity domain.
+4. Click the domain, **Default**. Note that you had logged into OCI Console using the default identity domain.
 
     ![Click default domain](./images/39-default-domain.png "Click default domain")
 
-3. Under **Identity domain**, click **Dynamic groups**.
+5. Under **Identity domain**, click **Dynamic groups**.
 
     ![Click dynamic group](./images/21-click-dynamic-group.png "Click group")
 
-4. Click **Create dynamic group**.
+6. Click **Create dynamic group**.
 
-5. In the **Create dynamic group** page, enter a **Name** and a **Description** for the dynamic group. *Note* the name of the dynamic group.
+7. In the **Create dynamic group** page, enter a **Name** and a **Description** for the dynamic group. *Note* the name of the dynamic group.
 
     **Name**:
     
@@ -129,7 +127,7 @@ Dynamic groups allow you to group Oracle Cloud Infrastructure resources as princ
 
     ![Create dynamic group](./images/38-create-dynamic-group.png "Create dynamic group")
 
-6. Enter the followng rule:
+8. Enter the followng rule:
 
     ```bash
     <copy>ALL{resource.type='mysqldbsystem', resource.compartment.id = '<OCIDComparment>'}</copy>
@@ -144,10 +142,10 @@ Dynamic groups allow you to group Oracle Cloud Infrastructure resources as princ
 
     ![Enter rule](./images/37-dynamic-group-rule.png "Enter rule")
 
-8. Click **Create**.
+9. Click **Create**.
 
 
-## Task 5: Write policies for the dynamic group
+## Task 4: Write policies for the dynamic group to access Object Storage bucket
 
 To access Object Storage from HeatWave, you must define a policy that enables the dynamic group to access to buckets and its folders.
 
@@ -216,9 +214,9 @@ Pre-authenticated requests provide a way to let you access a bucket or an object
     ![Copy Pre-Authenticated Request details](./images/10-copy-par.png "Copy Pre-Authenticated Request details")*/ -->
 
 
-## Task 6: Set up a vector store
+## Task 5: Set up a vector store
 
-1. Create a new schema and select it. You can also select any existing schema.
+1. Create a new schema and select it.
 
     ```bash
     <copy>create database genai_db;</copy>
@@ -268,31 +266,15 @@ Pre-authenticated requests provide a way to let you access a bucket or an object
     ```bash
     <copy>select count(*) from livelab_embedding_pdf; </copy>
     ```
-    You should see a numerical value in the output, which means your embeddings are successfully loaded in the table. If you get an error, wait for a few minutes and try again. It takes a couple of minutes to create vector embeddings.
+    It takes a couple of minutes to create vector embeddings. You should see a numerical value in the output, which means your embeddings are successfully loaded in the table.
 
     ![Vector embeddings](./images/15-check-count.png "Vector embeddings")
 
-## Task 7: Perform a vector search
+## Task 6: Perform retrieval augmented generation
 
 HeatWave retrieves content from the vector store and provide that as context to the LLM. This process is called as retrieval-augmented generation or RAG. This helps the LLM to produce more relevant and accurate results for your queries.
 
-1. Load the LLM in HeatWave by entering the following command, and clicking **Execute the selection or full block on HeatWave and create a new block**.
-
-    ```bash
-    <copy>call sys.ML_MODEL_LOAD('LLMModel', NULL);</copy>
-    ```
-
-    Replace LLMModel with the name of the LLM model that you want to use. The available models are: mistral-7b-instruct-v1 and llama2-7b-v1.
-
-    For example:
-
-    ```bash
-    <copy>call sys.ML_MODEL_LOAD('mistral-7b-instruct-v1', NULL);</copy>
-    ```
-
-    ![Load LLMs](./images/16-load-llm.png "Load LLMs")
-
-2. Set the @options session variable to specify the table for retrieving the vector embeddings.
+1. Set the @options session variable to specify the table for retrieving the vector embeddings.
 
     ```bash
     <copy>set @options = JSON_OBJECT("vector_store", JSON_ARRAY("<DBName>.<EmbeddingsTableName>"));</copy>
@@ -304,7 +286,7 @@ HeatWave retrieves content from the vector store and provide that as context to 
     <copy>set @options = JSON_OBJECT("vector_store", JSON_ARRAY("genai_db.livelab_embedding_pdf"));</copy>
     ```
 
-3. Set the session @query variable to define your natural language query.
+2. Set the session @query variable to define your natural language query.
 
     ```bash
     <copy>set @query="<AddYourQuery>";</copy>
@@ -318,7 +300,7 @@ HeatWave retrieves content from the vector store and provide that as context to 
     <copy>set @query="What is HeatWave AutoML?";</copy>
     ```
 
-4. Retrieve the augmented prompt, using the ML_RAG routine, and click **Execute the selection or full block on HeatWave and create a new block**.
+3. Retrieve the augmented prompt, using the ML_RAG routine, and click **Execute the selection or full block on HeatWave and create a new block**.
 
     ```bash
     <copy>call sys.ML_RAG(@query,@output,@options);</copy>
@@ -326,7 +308,7 @@ HeatWave retrieves content from the vector store and provide that as context to 
 
     ![Set options](./images/17-set-options.png "Set options")
 
-5. Print the output:
+4. Print the output:
 
     ```bash
     <copy>select JSON_PRETTY(@output);</copy>
@@ -339,6 +321,7 @@ HeatWave retrieves content from the vector store and provide that as context to 
     - The citations section shows the segments and documents it referred to as context.
 
     ![Vector search results](./images/18-vector-search-output.png "Vector search results")
+
 ## Learn More
 
 - [HeatWave User Guide](https://dev.mysql.com/doc/heatwave/en/)

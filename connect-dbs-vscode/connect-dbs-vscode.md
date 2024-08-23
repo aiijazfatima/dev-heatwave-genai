@@ -1,8 +1,8 @@
-# Create DB System
+# Connect to the HeatWave Instance
 
 ## Introduction
 
-In this lab you will setup MySQL Shell for Visual Studio Code, and connect to the DB system you created in Lab 1 from VS Code.
+In this lab you will setup MySQL Shell for Visual Studio Code, and connect to the HeatWave instance you created in Lab 1 from VS Code.
 
 _Estimated Time:_ 30 minutes
 
@@ -12,7 +12,7 @@ In this lab, you will be guided through the following tasks:
 
 - Setup MySQL Shell for Visual Studio Code.
 - Connect to the OCI tenancy.
-- Connect to the DB System.
+- Connect to the HeatWave instance.
 
 ### Prerequisites
 
@@ -77,9 +77,9 @@ Before you can get started, you must set up a DB Connection to the HeatWave inst
     ![Tenancy details](./images/7-tenancy-details.png "Tenancy details")
 
 
-## Task 3: Connect to the DB System
+## Task 3: Connect to the HeatWave instance
 
-1. In Visual Studio Code, under **ORACLE CLOUD INFRASTRUCTURE**, browse to the DB system, **heatwave-genai-dbs**, and right click and select **Create Connection with Bastion Service**.
+1. In Visual Studio Code, under **ORACLE CLOUD INFRASTRUCTURE**, browse to the HeatWave instance, **heatwave-genai-dbs**, and right click and select **Create Connection with Bastion Service**.
 
     ![Create connection with Bastion service](./images/8-create-bastion.png "Create connection with Bastion service")
 
@@ -87,7 +87,7 @@ Before you can get started, you must set up a DB Connection to the HeatWave inst
 
     ![Create new connection with Bastion service](./images/9-create-new-bastion.png "Create new connection with Bastion service")
 
-3. In the **Database Connection Configuration** dialog, enter the **User Name** and click **Store Password** to enter the password of your DB system.
+3. In the **Database Connection Configuration** dialog, enter the **User Name** and click **Store Password** to enter the password of your HeatWave instance.
 
     ![Database Connection Configuration](./images/10-database-connection.png "Database Connection Configuration")
 
@@ -95,11 +95,11 @@ Before you can get started, you must set up a DB Connection to the HeatWave inst
 
 5. Once the Bastion is created, click **OK** to create the connection. 
 
-6. Under **DATABASE CONNECTIONS**, click **Open New Database Connection** icon next to your DB system to connect to it. 
+6. Under **DATABASE CONNECTIONS**, click **Open New Database Connection** icon next to your HeatWave instance to connect to it. 
 
     ![Open New Database Connection](./images/11-open-database-connection.png "Open New Database Connection")
 
-7. Check whether you are connected to the DB system by entering the following command and clicking **Execute the selection or full block on HeatWave and create a new block**.
+7. Check whether you are connected to the HeatWave instance by entering the following command and clicking **Execute the selection or full block on HeatWave and create a new block**.
 
     ```bash
     <copy>show databases;</copy>

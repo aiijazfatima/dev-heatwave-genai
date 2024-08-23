@@ -1,8 +1,8 @@
-# Create a DB System with a HeatWave Cluster
+# Create a HeatWave instance
 
 ## Introduction
 
-In this lab, you will create a create a compartment, a Virtual Cloud Network,  and  DB System.  
+In this lab, you will create a create a compartment, a Virtual Cloud Network,  and a Heatwave instance.  
 
 _Estimated Time:_ 30 minutes
 
@@ -14,7 +14,7 @@ In this lab, you will be guided through the following tasks:
 - Create Virtual Cloud Network.
 - Configure security list to allow incoming connections.
 - Configure security list to allow HTTP incoming connections.
-- Create a DB system with a HeatWave cluster.
+- Create a HeatWave instance.
 
 ### Prerequisites
 
@@ -156,7 +156,7 @@ In this lab, you will be guided through the following tasks:
 
     ![New ingress rules](./images/19-new-ingress-rules-default-security-list.png "New ingress rules")
 
-## Task 5: Create a DB system
+## Task 5: Create a HeatWave instance
 
 1. Click the **Navigation menu** in the upper left, navigate to **Databases**, and under **HeatWave**, select **DB Systems**.
     

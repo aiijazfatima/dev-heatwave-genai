@@ -1,4 +1,4 @@
-# Generate Content
+# Use HeatWave in-database LLM to Generate and Summarize Content
 
 ## Introduction
 
@@ -20,18 +20,12 @@ In this lab, you will be guided through the following task:
 
 ## Task 1:  Generate response using in-database LLMs
 
-1. Load the LLM in HeatWave by entering either of the following commands, and click **Execute the selection or full block on HeatWave and create a new block**:
+1. Load the LLM in HeatWave, and click **Execute the selection or full block on HeatWave and create a new block**:
 
     - To load mistral-7b-instruct-v1 model:
 
         ```bash
         <copy>call sys.ML_MODEL_LOAD('mistral-7b-instruct-v1', NULL);</copy>
-        ```
-
-    - To load llama2-7b-v1 model:
-    
-        ```bash
-        <copy>call sys.ML_MODEL_LOAD('llama2-7b-v1', NULL);</copy>
         ```
 
         ![Load LLMs](./images/1-load-llm.png "Load LLMs")
