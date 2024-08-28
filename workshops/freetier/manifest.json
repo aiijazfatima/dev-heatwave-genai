@@ -35,12 +35,6 @@
         },
 
         {
-          "title": "Lab 5: Run HeatWave Chat",
-          "filename": "../../heatwave-chat/heatwave-chat.md"
-        },
-
-
-        {
           "title": "Stop Services",
           "filename": "../../stop-services/stop-services.md"
         },

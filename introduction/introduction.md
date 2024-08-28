@@ -1,6 +1,8 @@
 # Introduction
 
-HeatWave GenAI is the industry's first automated in-database Generative AI service. HeatWave GenAI is unique because it seamlessly integrates large language models (LLMs) and embedding generation within the database, eliminating the need for external services. This integration enhances performance and security, simplifies application complexity, and reduces costs as it runs on CPUs. HeatWave GenAI integrates seamlessly with other in-database HeatWave capabilities such as machine learning, analytics, and Lakehouse, opening up a new class of applications and providing higher-quality responses. With HeatWave GenAI, you can effortlessly generate new and realistic content, speed up manual or repetitive tasks like summarizing large documents, and engage in natural language interactions.
+HeatWave GenAI lets organizations easily process and analyze vast amounts of proprietary unstructured documents in Object Storage. They can develop turnkey AI-powered applications with enhanced performance and enterprise-grade data security. HeatWave genAI supports in-database large language models (LLMs), an automated, in-database vector store, scale-out vector processing, and has the ability to have contextual conversations in natural language. 
+
+HeatWave GenAI is unique because it seamlessly integrates large language models (LLMs) and embedding generation within the database, eliminating the need for external services. This integration enhances performance and security, simplifies application complexity, and reduces costs as it runs on CPUs. HeatWave GenAI integrates seamlessly with other in-database HeatWave capabilities such as machine learning, analytics, and Lakehouse, opening up a new class of applications and providing higher-quality responses. With HeatWave GenAI, you can effortlessly generate new and realistic content, speed up manual or repetitive tasks like summarizing large documents, and engage in natural language interactions.
 
 ![HeatWave GenAI](./images/1-heatwave-genai.png "HeatWave GenAI")
 
@@ -32,7 +34,7 @@ In this lab, you will be guided through the following steps:
 
 ## Prerequisites
 
-Please make sure you can sign in to your HeatWave OCI Cloud Account. See [Sign Up](https://dev.mysql.com/doc/heatwave-aws/en/heatwave-aws-sign-procedure.html).
+Please make sure you can sign in to your HeatWave OCI Cloud Account.
 
 ## Learn More
 
