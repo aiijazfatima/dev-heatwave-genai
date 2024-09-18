@@ -16,7 +16,7 @@ In this lab, you will be guided through the following tasks:
 
 ### Prerequisites
 
-- You have completed Lab 1.
+- You have completed Lab 2.
 - Visual Studio Code is installed. If you do not have it installed, download and install from [here](https://code.visualstudio.com/download).
 
 ## Task 1: Setup MySQL Shell for Visual Studio Code
@@ -32,7 +32,7 @@ In this lab, you will be guided through the following tasks:
     ![MySQL Shell installed](./images/2-installed-mysql-shell-for-vscode.png "MySQL Shell installed")
 
 
-## Task 2:  Connect to the OCI tenancy
+<!-- ## Task 2:  Connect to the OCI tenancy
 
 Before you can get started, you must set up a DB Connection to the HeatWave instance on the Oracle Cloud Infrastructure (OCI). This has to be done once since MySQL Shell for VS Code will store all registered DB connections.
 
@@ -74,32 +74,69 @@ Before you can get started, you must set up a DB Connection to the HeatWave inst
 
 8. Close the file and reload the **ORACLE CLOUD INFRASTRUCTURE** view. Within a couple of minutes, you can browse the resources of your OCI tenancy.
 
-    ![Tenancy details](./images/7-tenancy-details.png "Tenancy details")
+    ![Tenancy details](./images/7-tenancy-details.png "Tenancy details") -->
 
+## Task 2: Connect to the HeatWave instance
 
-## Task 3: Connect to the HeatWave instance
+1. In Visual Studio Code, click the **MySQL Shell for VS Code** icon in the activity bar.
 
-1. In Visual Studio Code, under **ORACLE CLOUD INFRASTRUCTURE**, browse to the HeatWave instance, **heatwave-genai-dbs**, and right click and select **Create Connection with Bastion Service**.
+2. Click **Create New DB Connection**.
 
-    ![Create connection with Bastion service](./images/8-create-bastion.png "Create connection with Bastion service")
+    ![Create New DB Connection](./images/connect-database.png "Create New DB Connection")
 
-2. Click **Create New Bastion**.
+3. In the **Database Connection Configuration** dialog, enter/select the following:
 
-    ![Create new connection with Bastion service](./images/9-create-new-bastion.png "Create new connection with Bastion service")
+    - **Database Type**: **MySQL**
 
-3. In the **Database Connection Configuration** dialog, enter the **User Name** and click **Store Password** to enter the password of your HeatWave instance.
+    - **Caption**:
 
-    ![Database Connection Configuration](./images/10-database-connection.png "Database Connection Configuration")
+        ```bash
+          <copy>heatwave-genai-db-connection</copy>
+         ```
 
-4. It takes a couple of minutes to create the Bastion.
+4. Under **Connection Details**, in the **Basic** tab, enter the following:
 
-5. Once the Bastion is created, click **OK** to create the connection. 
+    - **Hostname or IP Address**: Private IP address of the DB system that you had noted in Lab 1, Task 5, Step 19.
 
-6. Under **DATABASE CONNECTIONS**, click **Open New Database Connection** icon next to your HeatWave instance to connect to it. 
+    - **User Name**: 
 
-    ![Open New Database Connection](./images/11-open-database-connection.png "Open New Database Connection")
+        ```bash
+        <copy>admin</copy>
+        ```
 
-7. Check whether you are connected to the HeatWave instance by entering the following command and clicking **Execute the selection or full block on HeatWave and create a new block**.
+    - **Tunneling Options**: Select **Connect Using SSH Tunnel**.
+
+        ![Database Connection Configuration](./images/database-connection-details.png "Database Connection Configuration")
+
+5. Click **Store Passsword**, and enter the password.
+
+    ![Enter password](./images/password.png "Enter password")
+
+6. Under **Connection Details**, click **SSH Tunnel**.
+
+    ![Click SSH tunnel](./images/ssh-tunnel.png "Click SSH tunnel")
+
+7. Enter the following details:
+
+    - **SSH URI**: opc@ComputeIPAddress. Replace ComputeIPAddress with the IP address of the compute that you had noted in Lab 2, Task 1, Step 13.
+
+    - **SSH Private Key File**: Browse to the SSH folder and select the SSH key
+
+    - **Custom Path for the SSH Configuration File**: Browse to the SSH folder and select the SSH key
+
+        ![SSH details](./images/ssh-details.png "SSH details")
+
+8. Click **OK**.
+
+9. Under **DATABASE CONNECTIONS**, click **Open New Database Connection** icon next to your HeatWave instance to connect to it. 
+
+    ![Open New Database Connection](./images/open-connection.png "Open New Database Connection")
+
+10. Click **Yes** to confirm your connection request. 
+
+    ![Confirm New Database Connection](./images/confrm-connection.png "Confirm New Database Connection")
+
+11. Check whether you are connected to the HeatWave instance by entering the following command and clicking **Execute the selection or full block on HeatWave and create a new block**.
 
     ```bash
     <copy>show databases;</copy>

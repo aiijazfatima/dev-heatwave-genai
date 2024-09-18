@@ -30,7 +30,7 @@ In this lab, you will be guided through the following task:
 
         ![Load LLMs](./images/1-load-llm.png "Load LLMs")
  
-2. Set the @query session variable with your query in natural language.
+2. Set the @query session variable with your query in natural language, and click **Enter**.
 
     ```bash
     <copy>set @query="<QueryInNaturalLanguage>";</copy>
@@ -55,7 +55,7 @@ In this lab, you will be guided through the following task:
 
 ## Task 2: Summarize text using in-database LLMs
 
-1. Define the text that you want to summarize:
+1. Define the text that you want to summarize, and click **Enter**:
 
     ```bash
     <copy>set @text="<TextToSummarize>";</copy>

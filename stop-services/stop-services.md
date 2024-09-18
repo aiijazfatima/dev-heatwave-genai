@@ -1,20 +1,17 @@
-# Stop OCI Services
-
-![mysql heatwave](./images/mysql-heatwave-logo.jpg "mysql heatwave")
-
+# Stop Services
+ 
 ## Introduction
 
 In this lab you will use the Console to stop all of the Services you created in this workshop.
 
-_Estimated Time:_ 5 minutes
-
+_Estimated Time:_ 5 min
 
 ### Objectives
 
 In this lab, you will be guided through the following task:
 
 - Stop the HeatWave instance.
-- Delete the bucket.
+- Delete the bucket. 
 
 ### Prerequisites
 
@@ -26,7 +23,7 @@ In this lab, you will be guided through the following task:
 
 1. Click the **Navigation Menu** in the upper left, navigate to **Databases**, and under HeatWave select **DB Systems**.
 
-2. In the **heatwave-geni** Compartment, select the **heatwave-genai-dbs**, under **Actions**, click **Stop**
+2. In the **heatwave-geni** Compartment, select the **heatwave-genai-dbs**, under **Actions**, click **Stop**.
 
     ![Stop DB system](./images/1-stop-dbs.png "Stop DB system")
 
@@ -34,22 +31,21 @@ In this lab, you will be guided through the following task:
 
     ![Stop DB system](./images/2-stop-dialog.png "Stop DB system")
 
-
 ## Task 2: Delete the bucket
 
 1. Open the **Navigation menu** and click **Storage**. Under **Object Storage & Archive Storage**, click **Buckets**.
 
-2. Select the compartment from the list under List Scope. 
+2. Select the compartment from the list under List Scope.
 
-3. Click the **More Actions** menu besides your bucket, **bucket-vector-search**, and click **Delete**. 
+3. Click the **More Actions** menu besides your bucket, **bucket-vector-search**, and click **Delete**.
 
-    ![Delete bucket](./images/3-delete-bucket.png "Delete bucket")  
+    ![Delete bucket](./images/3-delete-bucket.png "Delete bucket")
 
 4. In the **Delete Bucket** panel, confirm the bucket name, **bucket-vector-search**, and click **Delete**.
 
     ![Confirm deletion](./images/4-confirm-deletion.png "Confirm deletion")
 
-**Congratulations!  You have successfully finished the Workshop.**
+**Congratulations! You have successfully finished the Workshop.**
 
 ## Learn More
 
@@ -59,9 +55,8 @@ In this lab, you will be guided through the following task:
 
 - [MySQL Documentation](https://dev.mysql.com/)
 
-
 ## Acknowledgements
 
 - **Author** - Aijaz Fatima, Product Manager
-- **Contributors** - Mandy Pang, Senior Principal Product Manager, Aijaz Fatima, Product Manager
+- **Contributors** - Mandy Pang, Senior Principal Product Manager
 - **Last Updated By/Date** - Aijaz Fatima, Product Manager, August 2024

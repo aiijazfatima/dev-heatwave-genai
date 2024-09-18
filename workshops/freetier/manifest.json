@@ -20,17 +20,22 @@
         },
 
         {
-          "title": "Lab 2: Connect to the HeatWave Instance from Visual Studio Code",
+          "title": "Lab 2: Create a Compute instance ",
+          "filename": "../../create-compute/create-compute.md"
+        },
+
+        {
+          "title": "Lab 3: Connect to the HeatWave Instance from Visual Studio Code",
           "filename": "../../connect-dbs-vscode/connect-dbs-vscode.md"
         },
 
         {
-          "title": "Lab 3: Use HeatWave In-database LLM to Generate and Summarize Content",
+          "title": "Lab 4: Use HeatWave In-database LLM to Generate and Summarize Content",
           "filename": "../../generate-content/generate-content.md"
         },
 
         {
-          "title": "Lab 4: Perform Retrieval Augmented Generation",
+          "title": "Lab 5: Perform Retrieval Augmented Generation",
           "filename": "../../vector-search/vector-search.md"
         },
 
