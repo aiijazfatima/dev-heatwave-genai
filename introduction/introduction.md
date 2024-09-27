@@ -31,7 +31,6 @@ In this lab, you will be guided through the following steps:
 4. Generate content
 5. Perform a vector search
 
-
 ## Prerequisites
 
 Please make sure you can sign in to your HeatWave OCI Cloud Account.

@@ -10,6 +10,7 @@ _Estimated Time:_ 30 minutes
 
 In this lab, you will be guided through the following task:
 
+- Download HeatWave files.
 - Create a bucket and a folder.
 - Upload files to the bucket folder.
 - Create a dynamic group.
@@ -19,9 +20,22 @@ In this lab, you will be guided through the following task:
 
 ### Prerequisites
 
-- Must complete Lab 3.
+- Must complete Lab 4.
 
-## Task 1: Create a bucket and a folder
+## Task 1: Download HeatWave files
+
+Download HeatWave files on which we will perform a vector search.
+
+1. Download the following files and save it in your local computer.
+
+    - https://www.oracle.com/a/ocom/docs/mysql-heatwave-technical-brief.pdf
+    - https://www.oracle.com/a/ocom/docs/mysql/mysql-heatwave-on-aws-brief.pdf
+    - https://www.oracle.com/a/ocom/docs/mysql/mysql-heatwave-ml-technical-brief.pdf
+    - https://www.oracle.com/a/ocom/docs/mysql/mysql-heatwave-lakehouse-technical-brief.pdf
+
+    ![Download files](./images/vector-search-folder.png "Download files")
+
+## Task 2: Create a bucket and a folder
 
 The Object Storage service provides reliable, secure, and scalable object storage. Object Storage uses buckets to organize your files. 
 
@@ -65,7 +79,7 @@ The Object Storage service provides reliable, secure, and scalable object storag
 
 9. Click **Create**.
 
-## Task 2: Upload files to the bucket folder
+## Task 3: Upload files to the bucket folder
 
 1.  In the **Bucket Details** page, under **Objects**, click the bucket folder name.
 
@@ -77,7 +91,7 @@ The Object Storage service provides reliable, secure, and scalable object storag
 
 3. Click **select files** to display a file selection dialog box.
 
-4. Select the files you want to perform a vector search on, and click **Upload**.
+4. Select the files you had downloaded earlier in Task 1, and click **Upload**.
 
     ![Upload files](./images/6-upload-files.png "Upload files")
 
@@ -86,7 +100,7 @@ The Object Storage service provides reliable, secure, and scalable object storag
     ![Upload files finished](./images/7-upload-files-finished.png "Upload files finished")
 
 
-## Task 3: Create a dynamic group
+## Task 4: Create a dynamic group
 
 Dynamic groups allow you to group Oracle Cloud Infrastructure resources as principal. You can then create policies to permit the dynamic groups to access Oracle Cloud Infrastructure services. 
 
@@ -145,7 +159,7 @@ Dynamic groups allow you to group Oracle Cloud Infrastructure resources as princ
 9. Click **Create**.
 
 
-## Task 4: Write policies for the dynamic group to access Object Storage bucket
+## Task 5: Write policies for the dynamic group to access Object Storage bucket
 
 To access Object Storage from HeatWave, you must define a policy that enables the dynamic group to access to buckets and its folders.
 
@@ -214,9 +228,13 @@ Pre-authenticated requests provide a way to let you access a bucket or an object
     ![Copy Pre-Authenticated Request details](./images/10-copy-par.png "Copy Pre-Authenticated Request details")*/ -->
 
 
-## Task 5: Set up a vector store
+## Task 6: Set up a vector store
 
-1. Create a new schema and select it.
+1. Go to Visual Studio Code, and under **DATABASE CONNECTIONS**, click **Open New Database Connection** icon next to your HeatWave instance to connect to it. 
+
+    ![Connect database](./images/vscode-connection.png "Connect database")
+
+2. Create a new schema and select it.
 
     ```bash
     <copy>create database genai_db;</copy>
@@ -244,15 +262,15 @@ Pre-authenticated requests provide a way to let you access a bucket or an object
     ```
     Replace the following:
 
-    - BucketName: The OCI Object Storage bucket name.
-    - Namespace: The name of the Object Storage bucket namespace.
-    - Path: Path to the folder that contains the source file.
+    - BucketName: The OCI Object Storage bucket name that you created in Task 2.
+    - Namespace: The name of the Object Storage bucket namespace that you copied in Task 2, Step 6.
+    - Path: Path to the folder that contains the source file that you created in Task 2, Step 7.
     - VectorStoreTableName: The name you want for the vector store table
    
     For example:
 
     ```bash
-    <copy>call sys.VECTOR_STORE_LOAD('oci://bucket-vector-search@axoumfbmk7ld/bucket-folder-heatwave/', '{"table_name": "livelab_embedding"}');</copy>
+    <copy>call sys.VECTOR_STORE_LOAD('oci://bucket-vector-search@axqzijr6ae84/bucket-folder-heatwave/', '{"table_name": "livelab_embedding"}');</copy>
     ```
 
     ![Ingest files from Object Storage](./images/14-ingest-files.png "Ingest files from Object Storage")
@@ -270,11 +288,11 @@ Pre-authenticated requests provide a way to let you access a bucket or an object
 
     ![Vector embeddings](./images/15-check-count.png "Vector embeddings")
 
-## Task 6: Perform retrieval augmented generation
+## Task 7: Perform retrieval augmented generation
 
 HeatWave retrieves content from the vector store and provide that as context to the LLM. This process is called as retrieval-augmented generation or RAG. This helps the LLM to produce more relevant and accurate results for your queries.
 
-1. Set the @options session variable to specify the table for retrieving the vector embeddings.
+1. Set the @options session variable to specify the table for retrieving the vector embeddings, and click **Enter**.
 
     ```bash
     <copy>set @options = JSON_OBJECT("vector_store", JSON_ARRAY("<DBName>.<EmbeddingsTableName>"));</copy>
@@ -286,7 +304,7 @@ HeatWave retrieves content from the vector store and provide that as context to 
     <copy>set @options = JSON_OBJECT("vector_store", JSON_ARRAY("genai_db.livelab_embedding_pdf"));</copy>
     ```
 
-2. Set the session @query variable to define your natural language query.
+2. Set the session @query variable to define your natural language query, and click **Enter**.
 
     ```bash
     <copy>set @query="<AddYourQuery>";</copy>
