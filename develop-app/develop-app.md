@@ -1,4 +1,4 @@
-# Build LAMP RAG-Powered AI Chat App
+# Build HeatWave RAG Chat Application
 
 ## Introduction
 
@@ -25,7 +25,7 @@ In this lab, you will be guided through the following tasks:
 
 This application provides a user-friendly web interface for interacting with HeatWave GenAI Retrieval-Augmented Generation (RAG) capabilities. It enables you to ask questions and receive AI-generated responses based on the information stored in HeatWave.
 
-#### RAG Application Architecture Diagram
+#### HeatWave RAG Chat Application Architecture Diagram
 
 The following diagram provides details of how the different components of the HeatWave RAG chat application are structured and how they interact with each other. The arrows indicate the flow of data and interactions between the components. For example:
 
