@@ -52,7 +52,7 @@ The following diagram provides details of how the different components of the He
 
 This solution bridges the gap between complex database operations and user-friendly interaction, making it easy for users to leverage the power of HeatWave GenAI capabilities through a simple chat interface.
 
-_Note:_ This application code is intended for educational purposes only. It is designed to help developers learn and practice application development skills with MySQL HeatWave on OCI. The code is not designed to be used in a production environment.
+_Note:_ This application code is intended for educational purposes only. It is designed to help developers learn and practice application development skills with HeatWave on OCI. The code is not designed to be used in a production environment.
 
 _Estimated Time:_ 20 minutes
 
