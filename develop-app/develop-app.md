@@ -361,7 +361,7 @@ _Estimated Time:_ 20 minutes
 7. Locate the following line in the chat_interface.php file:
 
     ```bash
-    <copy>"$rag = new HeatWaveRAG('your_mysql_host', 'your_username', 'your_password', 'genai_db');"
+    <copy>"$rag = new HeatWaveRAG('your_mysql_host', 'your_username', 'your_password', 'genai_db');"</copy>
     ```
     ![Provide your administrator details](./images/rag-replace.png "Provide your administrator details")
 
@@ -380,7 +380,7 @@ _Estimated Time:_ 20 minutes
 1. From your web browser, access the chat_interface.php. 
 
     ```bash
-    http://<ComputePublicIPAddress>/app/chat_interface.php)
+    <copy>http://<ComputePublicIPAddress>/app/chat_interface.php)</copy>
     ```
 
     For example:
