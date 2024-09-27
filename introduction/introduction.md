@@ -7,13 +7,13 @@ HeatWave GenAI is unique because it seamlessly integrates large language models 
 ![HeatWave GenAI](./images/1-heatwave-genai.png "HeatWave GenAI")
 
 
-## About this Workshop
+### About this Workshop
 
 In this LiveLab, you will first setup Visual Studio Code. You will then create a HeatWave instance, and connect to it from Visual Studio Code. Subsequently, you will use HeatWave GenAI to generate content in natural language, summarize text, and perform vector search on your enterprise data.
 
 _Estimated Time:_ 1.5 hours
 
-## About Product/Technology
+### About Product/Technology
 
 HeatWave is a fully managed cloud service that enables organizations to efficiently run analytics, transaction processing, machine learning, and generative AI using a single service without the need for ETL. Its scale-out architecture is designed to process data stored in Object Storage and MySQL databases, delivering industry-leading performance and price-performance. HeatWave can process structured, semi-structured, and unstructured data in Object Storage. It provides the capability to create a vector store from Object Storage files and enables enterprises to utilize LLMs and generative AI on their internal content. This opens the door to a new class of applications built with HeatWave, including the ability to interact with HeatWave using natural language. HeatWave is available on OCI, AWS, and Azure.
 
@@ -21,7 +21,7 @@ The following diagram illustrates HeatWave components at a glance.
 
 ![HeatWave components](./images/2-heatwave-components.png "HeatWave components")
 
-## Objectives
+### Objectives
 
 In this lab, you will be guided through the following steps:
 
@@ -31,7 +31,7 @@ In this lab, you will be guided through the following steps:
 4. Generate content
 5. Perform a vector search
 
-## Prerequisites
+### Prerequisites
 
 Please make sure you can sign in to your HeatWave OCI Cloud Account.
 
